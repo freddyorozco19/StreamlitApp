@@ -17,3 +17,4 @@ astropy
 pydeck
 scipy
 mplsoccer
+openpyxl
