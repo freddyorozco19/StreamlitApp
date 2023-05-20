@@ -67,11 +67,6 @@ prop3 = font_manager.FontProperties(fname=font_path2)
 #make it look nice from the start
 st.set_page_config(layout='wide')
 
-custom_theme = {
-    'primaryColor': '#FF0050',
-}
-st.set_theme(custom_theme=custom_theme)
-
 st.markdown(
     """
     <style>
