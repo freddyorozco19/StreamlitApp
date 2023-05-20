@@ -455,6 +455,23 @@ if menu_id == "AllMetrics":
     with row7:
         st.metric("Expulsiones", dfexp)
         
+    css='''
+    [data-testid="metric-container"] {
+        width: fit-content;
+        margin: auto;
+    }
+    
+    [data-testid="metric-container"] > div {
+        width: fit-content;
+        margin: auto;
+    }
+    
+    [data-testid="metric-container"] label {
+        width: fit-content;
+        margin: auto;
+    }
+    '''
+        
         
         but0, but1 = st.columns(2)
     with but0:
@@ -476,22 +493,7 @@ if menu_id == "AllMetrics":
     st.title("RANKING")
         
     #st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
-    css='''
-    [data-testid="metric-container"] {
-        width: fit-content;
-        margin: auto;
-    }
-    
-    [data-testid="metric-container"] > div {
-        width: fit-content;
-        margin: auto;
-    }
-    
-    [data-testid="metric-container"] label {
-        width: fit-content;
-        margin: auto;
-    }
-    '''
+  
     
     # I usually dump any scripts at the bottom of the page to avoid adding unwanted blank lines
     st.markdown(f'<style>{css}</style>',unsafe_allow_html=True)
