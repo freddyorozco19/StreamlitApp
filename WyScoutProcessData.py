@@ -473,7 +473,7 @@ if menu_id == "AllMetrics":
     '''
         
         
-        but0, but1 = st.columns(2)
+    but0, but1 = st.columns(2)
     with but0:
         name = Filename
         df_xlsx = to_excel(df)
