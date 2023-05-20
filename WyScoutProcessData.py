@@ -83,7 +83,7 @@ st.markdown(
     
 # specify the primary menu definition
 menu_data = [
-    {'id': "CalculateAllMetrics", 'label':"Calculate AllMetrics"},
+    {'id': "AllMetrics", 'label':"AllMetrics"},
     {'id': "ActionsData", 'label':"Extract ActionsData"},
     {'id': "PassesData", 'label':"Extract PassesData"},
     {'id': "ProMatchStats", 'label':"ProMatchStats"},
@@ -93,7 +93,7 @@ over_theme = {'txc_inactive': '#FFFFFF'}
 menu_id = hc.nav_bar(
     menu_definition=menu_data,
     override_theme=over_theme,
-    home_name='Home',
+    home_name='AllMetrics',
     login_name='Logout',
     hide_streamlit_markers=True, #will show the st hamburger as well as the navbar now!
     sticky_nav=True, #at the top or not
@@ -104,7 +104,7 @@ menu_id = hc.nav_bar(
 ############################################################################################################################################################################################################################
 ############################################################################################################################################################################################################################
 
-if menu_id == "CalculateAllMetrics":
+if menu_id == "AllMetrics":
     with st.sidebar:
         with open("C:/Users/ACER/Documents/WinStats/Resources/win.png", "rb") as f:
             data = base64.b64encode(f.read()).decode("utf-8")
