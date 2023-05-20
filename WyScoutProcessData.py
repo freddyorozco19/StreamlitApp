@@ -427,20 +427,7 @@ if menu_id == "AllMetrics":
     st.markdown("""---""")
     st.write(df)
     st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
-    but0, but1 = st.columns(2)
-    with but0:
-        name = Filename
-        df_xlsx = to_excel(df)
-        st.download_button(label='Descargar Archivo Excel',
-                           data=df_xlsx,
-                           file_name= ""+ name +".xlsx")
 
-    with but1:
-        df_csv = convert_df(df)
-        st.download_button(label="Descargar Archivo CSV",
-                           data=df_csv,
-                           file_name=""+ name +".csv",
-                           mime='text/csv')
     row0, row1, row2, row3, row4, row5, row6, row7 = st.columns(8)
     #3118657252
 
@@ -468,6 +455,22 @@ if menu_id == "AllMetrics":
     with row7:
         st.metric("Expulsiones", dfexp)
         
+        
+        but0, but1 = st.columns(2)
+    with but0:
+        name = Filename
+        df_xlsx = to_excel(df)
+        st.download_button(label='Descargar Archivo Excel',
+                           data=df_xlsx,
+                           file_name= ""+ name +".xlsx")
+
+    with but1:
+        df_csv = convert_df(df)
+        st.download_button(label="Descargar Archivo CSV",
+                           data=df_csv,
+                           file_name=""+ name +".csv",
+                           mime='text/csv')
+    
     st.markdown("""---""")
         
     #st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
