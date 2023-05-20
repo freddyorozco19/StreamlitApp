@@ -93,7 +93,6 @@ over_theme = {'txc_inactive': '#FFFFFF'}
 menu_id = hc.nav_bar(
     menu_definition=menu_data,
     override_theme=over_theme,
-    home_name='AllMetrics',
     login_name='Logout',
     hide_streamlit_markers=True, #will show the st hamburger as well as the navbar now!
     sticky_nav=True, #at the top or not
