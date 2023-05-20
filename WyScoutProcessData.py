@@ -425,6 +425,7 @@ if menu_id == "AllMetrics":
     dfconvpen = round(df['Penalties converted'].sum())
     dfexp = df['Red cards'].sum()
     st.markdown("""---""")
+    st.title("CALCULATED METRICS")
     st.write(df)
     st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
 
