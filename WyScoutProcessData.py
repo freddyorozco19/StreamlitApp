@@ -472,6 +472,8 @@ if menu_id == "AllMetrics":
                            mime='text/csv')
     
     st.markdown("""---""")
+    
+    st.title("RANKING")
         
     #st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
     css='''
