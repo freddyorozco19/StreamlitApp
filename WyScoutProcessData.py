@@ -49,11 +49,11 @@ def colorlist(color1, color2, num):
 
 #####################################################################################################################################################
 
-font_path = 'C:/Users/ACER/Documents/WinStats/Resources/fonts/keymer-bold.otf'  # Your font path goes here
+font_path = 'keymer-bold.otf'  # Your font path goes here
 font_manager.fontManager.addfont(font_path)
 prop2 = font_manager.FontProperties(fname=font_path)
 
-font_path2 = 'C:/Users/ACER/Documents/WinStats/Resources/fonts/BasierCircle-Italic.ttf'  # Your font path goes here
+font_path2 = 'BasierCircle-Italic.ttf'  # Your font path goes here
 font_manager.fontManager.addfont(font_path2)
 prop3 = font_manager.FontProperties(fname=font_path2)
 
