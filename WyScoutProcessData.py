@@ -106,7 +106,7 @@ menu_id = hc.nav_bar(
 
 if menu_id == "AllMetrics":
     with st.sidebar:
-        with open("C:/Users/ACER/Documents/WinStats/Resources/win.png", "rb") as f:
+        with open("Resources/win.png", "rb") as f:
             data = base64.b64encode(f.read()).decode("utf-8")
         
             st.sidebar.markdown(
