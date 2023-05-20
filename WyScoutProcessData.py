@@ -492,6 +492,91 @@ if menu_id == "AllMetrics":
     st.markdown("""---""")
     
     st.title("RANKING")
+    
+    with st.form(key='formMain'):
+                            
+        #tablecode = st.text_area('Paste your source code')
+        
+        rs00, rs10, rs20 = st.columns(3)
+        with rs00:
+            #SELECT METRIC
+            dftra = df.transpose()            
+            dftra = dftra.reset_index()            
+            metrics = list(dftra['index'].drop_duplicates())
+            metrics = metrics[15:]
+            metsel = st.selectbox('Selecciona la métrica:', metrics)   
+        with rs10:
+            #SELECT POSITION OPTION
+            positions = list(df['Pos1'].drop_duplicates())
+            #auxpos = "ALL"
+            #positions.append(auxpos)
+            possel = st.multiselect("Seleccionar posición:", positions)
+            dfc = df
+            #if possel == "ALL":
+            #    df = dfc
+            #else:
+            df = df[df['Pos1'].isin(possel)]
+        with rs20:
+            metsel2 = st.selectbox('Selecciona métrica auxiliar:', metrics)
+
+        rs01, rs02, rs03 = st.columns(3)
+        with rs01:
+            #FILTER BY MINUTES
+            maxmin = df['Minutes played'].max() + 5
+            minsel = st.slider('Filtro de minutos (%):', 0, 100)
+            minsel1 = (minsel*maxmin)/100
+            df = df[df['Minutes played'] >= minsel1].reset_index()
+            dfc = df
+        with rs02:
+            #FILTER BY AGE
+            agesel = st.slider('Filtro de edad:', 15, 45, (15, 45), 1)   
+            df = df[df['Age'] <= agesel[1]]
+            df = df[df['Age'] >= agesel[0]]
+        with rs03:
+            #AGE FILTER
+            umbralsel = st.slider("Seleccionar umbral:", 1, 100, 1) 
+        submit_button_main = st.form_submit_button(label='Aceptar')
+    #st.write(dfm)
+    
+    mainrow0, mainrow1 = st.columns(2)
+    with mainrow0:
+        
+        fig, ax = plt.subplots(figsize = (12,12), dpi=600)
+        fig.set_facecolor('#050E1E')
+        ax.patch.set_facecolor('#050E1E')
+        df = df.sort_values(by=[metsel], ascending=True)
+        dfZinf = df[['Player', 'Team', 'Pos0', 'Age', 'Matches played', '90s']]
+        dfZ2 = df[metsel2]
+        dfZ2m = max(df[metsel2])
+        umbral = (umbralsel*dfZ2m)/100
+        df = df[df[metsel2] >= umbral]
+        dfZ = df[metsel]        
+        dfZT = pd.concat([dfZinf, dfZ, dfZ2], axis=1)
+        ##################################################################################################################
+        Y1 = dfZ.tail(10)
+        Y2 = df['Total second assists'].tail(10)
+        Y3 = df['Total third assists'].tail(10)
+        Z = df['Player'].tail(10).str.upper()
+        colors = colorlist((1, 0, 0.3137254901960784, 0), (1, 0, 0.3137254901960784, 1), 10)
+        ax.barh(Z, Y1, edgecolor=(1,1,1,0.5), lw = 1, color=colors)
+        #ax.barh(Z, Y2, left = Y1, facecolor='#1C2E46', edgecolor=(1,1,1,0.5), lw = 1)
+        #ax.barh(Z, Y3, left = Y2+Y1, facecolor='#404C5B', edgecolor=(1,1,1,0.5), lw = 1)
+        plt.setp(ax.get_yticklabels(), fontproperties=prop2, fontsize=18, color='#FFF')
+        plt.setp(ax.get_xticklabels(), fontproperties=prop2, fontsize=20, color=(1,1,1,1))
+        plt.xlabel(metsel, color = 'w', fontproperties=prop2, fontsize=15, labelpad=20)
+        #ax.set_xticks([0, 5, 10])
+        #ax.set_xlim(0, 18)
+        ax.tick_params(axis='y', which='major', pad=15)
+        spines = ['top','bottom','left','right']
+        for x in spines:
+            if x in spines:
+                ax.spines[x].set_visible(False)
+        st.pyplot(fig, bbox_inches="tight", dpi=600, format="png")  
+    with mainrow1:
+        dfZT = dfZT.sort_values(by=[metsel], ascending=False)
+        st.dataframe(dfZT.head(15), height=490)
+        
+    st.markdown("""---""")
         
     #st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
   
