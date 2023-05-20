@@ -123,22 +123,22 @@ if menu_id == "AllMetrics":
             
             #Table = st.file_uploader("Choose a excel file", type = ['xlsx'], accept_multiple_files=False)
             
-            Table = st.file_uploader("Cargar archivo XLSX", type="xlsx")
+            Table = st.file_uploader("Cargar archivo", type="xlsx")
 
 
-            Filename = st.text_input("Ingrese Nombre del Archivo",
+            Filename = st.text_input("Nombre del Archivo",
                                       key="filename"
                                       )   
 
-            Matchday = st.text_input("Ingrese Matchday:",
+            Matchday = st.text_input("Jornada:",
                                     key="matchday"
                                     )   
 
-            Competition = st.text_input("Ingrese Competition:",
+            Competition = st.text_input("Competición:",
                                      key="competition"
                                      )   
 
-            Date = st.text_input("Ingrese Date:",
+            Date = st.text_input("Fecha de Registro:",
                                           key="date"
                                           )   
             
