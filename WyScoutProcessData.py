@@ -597,6 +597,18 @@ if menu_id == "AllMetrics":
             metricsFK2 = list(dftransp['index'].drop_duplicates())
             metricsFK2 = metricsFK[16:]
             metselFK2 = st.selectbox('Selecciona métrica dos:', metricsFK2)
+        with fk03:
+            #SELECT POSITION OPTION
+            positionsFK = list(df['Pos1'].drop_duplicates())
+            #auxpos = "ALL"
+            #positions.append(auxpos)
+            posselFK = st.multiselect("Seleccionar posición:", positionsFK)
+            dfc = df
+            #if possel == "ALL":
+            #    df = dfc
+            #else:
+            df = df[df['Pos1'].isin(possel)]
+     submit_buttonFK = st.form_submit_button(label='Aceptar')
         
     #st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
   
