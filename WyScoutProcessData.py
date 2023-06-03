@@ -427,7 +427,7 @@ if menu_id == "AllMetrics":
     st.markdown("""---""")
     st.title("CALCULATED METRICS")
     st.write(df)
-    st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
+    #st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
 
     row0, row1, row2, row3, row4, row5, row6, row7 = st.columns(8)
     #3118657252
