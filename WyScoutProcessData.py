@@ -608,7 +608,7 @@ if menu_id == "AllMetrics":
             #    df = dfc
             #else:
             df = df[df['Pos1'].isin(possel)]
-     submit_buttonFK = st.form_submit_button(label='Aceptar')
+        submit_buttonFK = st.form_submit_button(label='Aceptar')
         
     #st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
   
