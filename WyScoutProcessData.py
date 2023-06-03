@@ -427,6 +427,7 @@ if menu_id == "AllMetrics":
     st.markdown("""---""")
     st.title("CALCULATED METRICS")
     st.write(df)
+    dfbackup = df
     st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
 
     but0, but1 = st.columns(2)
@@ -579,6 +580,23 @@ if menu_id == "AllMetrics":
         st.dataframe(dfZT.head(15), height=490)
         
     st.markdown("""---""")
+    
+    st.title("SCATTER PLOT")
+    df = dfbackup
+    with st.form(key='formScatter'):
+        fk01, fk02, fk03 = st.columns(3)
+        with fk01:
+            #SELECT METRIC
+            dftransp = df.transpose()            
+            dftransp = dftransp.reset_index()            
+            metricsFK = list(dftransp['index'].drop_duplicates())
+            metricsFK = metricsFK[15:]
+            metselFK = st.selectbox('Selecciona métrica uno:', metricsFK)
+        with fk02:
+            #SELECT METRIC TWO
+            metricsFK2 = list(dftransp['index'].drop_duplicates())
+            metricsFK2 = metricsFK[16:]
+            metselFK2 = st.selectbox('Selecciona métrica dos:', metricsFK2)
         
     #st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
   
