@@ -472,7 +472,8 @@ if menu_id == "AllMetrics":
         margin: auto;
     }
     '''
-        
+    st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
+
         
     but0, but1 = st.columns(2)
     with but0:
