@@ -595,7 +595,7 @@ if menu_id == "AllMetrics":
         with fk02:
             #SELECT METRIC TWO
             metricsFK2 = list(dftransp['index'].drop_duplicates())
-            metricsFK2 = metricsFK[16:]
+            metricsFK2 = metricsFK2[16:]
             metselFK2 = st.selectbox('Selecciona métrica dos:', metricsFK2)
         with fk03:
             #SELECT POSITION OPTION
@@ -609,6 +609,10 @@ if menu_id == "AllMetrics":
             #else:
             df = df[df['Pos1'].isin(possel)]
         submit_buttonFK = st.form_submit_button(label='Aceptar')
+     
+    fig, ax = plt.subplots(figsize = (12,12), dpi=600)
+    fig.set_facecolor('#050E1E')
+    ax.patch.set_facecolor('#050E1E')
         
     #st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
   
