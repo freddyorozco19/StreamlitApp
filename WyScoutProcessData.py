@@ -521,6 +521,7 @@ if menu_id == "AllMetrics":
             df = df[df['Pos1'].isin(possel)]
         with rs20:
             metrics = metrics.remove(metsel)
+            metrics = metrics[2:]
             metsel2 = st.selectbox('Selecciona métrica auxiliar:', metrics)
 
         rs01, rs02, rs03 = st.columns(3)
