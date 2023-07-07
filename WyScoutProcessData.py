@@ -508,6 +508,7 @@ if menu_id == "AllMetrics":
             metrics = list(dftra['index'].drop_duplicates())
             metrics = metrics[15:]
             metsel = st.selectbox('Selecciona la métrica:', metrics)   
+            st.write(type(metrics))
         with rs10:
             #SELECT POSITION OPTION
             positions = list(df['Pos1'].drop_duplicates())
@@ -521,6 +522,7 @@ if menu_id == "AllMetrics":
             df = df[df['Pos1'].isin(possel)]
         with rs20:
             metrics = metrics.remove(metsel)
+            st.write(type(metrics))
             metrics = metrics[2:]
             metsel2 = st.selectbox('Selecciona métrica auxiliar:', metrics)
 
