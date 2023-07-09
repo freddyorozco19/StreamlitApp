@@ -528,10 +528,10 @@ if menu_id == "AllMetrics":
             #FILTER BY TEAMS
             df = dfORIGINAL
             teamlst = list(df['Team'].drop_duplicates())
-            
+            st.write(teamlst)
             auxteam = "ALL"
             teamlst = teamlst.append(auxteam)
-            st.write(teamlst)
+            
             teamsel = st.selectbox('Seleccionar equipo:', teamlst)
             dft = df
             if teamsel == "ALL":
