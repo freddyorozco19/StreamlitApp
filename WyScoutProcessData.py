@@ -632,6 +632,8 @@ if menu_id == "AllMetrics":
     ax.patch.set_facecolor('#050E1E')
     x = df[metselFK]
     y = df[metselFK2]
+    st.write(x)
+    st.write(y)
     ax.scatter(x, y , color='#FF0046')
     st.pyplot(fig, bbox_inches="tight", dpi=600, format="png")
     #st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
