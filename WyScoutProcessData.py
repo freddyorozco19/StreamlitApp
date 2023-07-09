@@ -533,7 +533,7 @@ if menu_id == "AllMetrics":
             dft = df
             if teamsel == "ALL":
                 df = dft
-            else
+            else:
                 df = df[df['Team'].isin(teamsel)]
         with rs02:
             #FILTER BY MINUTES
