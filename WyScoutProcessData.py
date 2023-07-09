@@ -527,9 +527,14 @@ if menu_id == "AllMetrics":
         with rs01:
             #FILTER BY TEAMS
             teamlst = list(df['Team'].drop_duplicates())
+            auxteam = "ALL"
+            teamlst = teamlst.append(auxteam)
             teamsel = st.selectbox('Seleccionar equipo:', teamlst)
             dft = df
-            df = df[df['Team'].isin(possel)]
+            if teamsel == "ALL":
+                df = dft
+            else
+                df = df[df['Team'].isin(teamsel)]
         with rs02:
             #FILTER BY MINUTES
             maxmin = df['Minutes played'].max() + 5
