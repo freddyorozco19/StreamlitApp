@@ -633,6 +633,7 @@ if menu_id == "AllMetrics":
     x = df[metselFK]
     y = df[metselFK2]
     ax.scatter(x, y , color='#FF0046')
+    st.pyplot(fig, bbox_inches="tight", dpi=600, format="png")
     #st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
   
     
