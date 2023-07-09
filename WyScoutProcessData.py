@@ -523,8 +523,8 @@ if menu_id == "AllMetrics":
             metrics = [word for word in metrics if word != metsel]
             metsel2 = st.selectbox('Selecciona métrica auxiliar:', metrics)
 
-        rs01, rs02, rs03, rs04 = st.columns(4)
-        with rs01:
+        rx01, rx02, rx03 = st.columns(3)
+        with rx01:
             #FILTER BY TEAMS
             df = dfORIGINAL
             teamlst = list(df['Team'].drop_duplicates())
@@ -536,19 +536,23 @@ if menu_id == "AllMetrics":
                 df = dft
             else:
                 df = df[df['Team'] == teamsel]
-        with rs02:
+        #with rx02:
+            #FILTER BY LEAGUE
+        
+        rs01, rs02, rs03 = st.columns(3)
+        with rs01:
             #FILTER BY MINUTES
             maxmin = df['Minutes played'].max() + 5
             minsel = st.slider('Filtro de minutos (%):', 0, 100)
             minsel1 = (minsel*maxmin)/100
             df = df[df['Minutes played'] >= minsel1].reset_index()
             dfc = df
-        with rs03:
+        with rs02:
             #FILTER BY AGE
             agesel = st.slider('Filtro de edad:', 15, 45, (15, 45), 1)   
             df = df[df['Age'] <= agesel[1]]
             df = df[df['Age'] >= agesel[0]]
-        with rs04:
+        with rs03:
             #AGE FILTER
             umbralsel = st.slider("Seleccionar umbral:", 1, 100, 1) 
         submit_button_main = st.form_submit_button(label='Aceptar')
