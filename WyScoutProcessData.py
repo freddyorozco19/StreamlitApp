@@ -630,7 +630,9 @@ if menu_id == "AllMetrics":
     fig, ax = plt.subplots(figsize = (12,12), dpi=600)
     fig.set_facecolor('#050E1E')
     ax.patch.set_facecolor('#050E1E')
-        
+    x = df[metselFK]
+    y = df[metselFK2]
+    ax.scatter(x, y , color='#FF0046')
     #st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
   
     
