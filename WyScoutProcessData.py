@@ -536,7 +536,7 @@ if menu_id == "AllMetrics":
             if teamsel == "ALL":
                 df = dft
             else:
-                df = df[df['Team'].isin(teamsel)]
+                df = df[df['Team'] == teamsel]
         with rs02:
             #FILTER BY MINUTES
             maxmin = df['Minutes played'].max() + 5
