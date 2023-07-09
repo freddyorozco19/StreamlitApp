@@ -599,7 +599,7 @@ if menu_id == "AllMetrics":
     st.markdown("""---""")
     
     st.title("SCATTER PLOT")
-    df = dfbackup
+    df = dfORIGINAL
     with st.form(key='formScatter'):
         fk01, fk02, fk03 = st.columns(3)
         with fk01:
@@ -634,6 +634,7 @@ if menu_id == "AllMetrics":
     y = df[metselFK2]
     st.write(x)
     st.write(y)
+    st.write(df['Goals']
     ax.scatter(x, y , color='#FF0046')
     st.pyplot(fig, bbox_inches="tight", dpi=600, format="png")
     #st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
