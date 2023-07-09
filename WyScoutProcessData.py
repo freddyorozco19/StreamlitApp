@@ -506,7 +506,7 @@ if menu_id == "AllMetrics":
             dftra = df.transpose()            
             dftra = dftra.reset_index()            
             metrics = list(dftra['index'].drop_duplicates())
-            metrics = metrics[15:]
+            metrics = metrics[17:]
             metsel = st.selectbox('Selecciona la métrica:', metrics)   
         with rs10:
             #SELECT POSITION OPTION
