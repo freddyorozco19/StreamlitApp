@@ -499,7 +499,7 @@ if menu_id == "AllMetrics":
     with st.form(key='formMain'):
                             
         #tablecode = st.text_area('Paste your source code')
-        
+        dfORIGINAL = df
         rs00, rs10, rs20 = st.columns(3)
         with rs00:
             #SELECT METRIC
@@ -526,6 +526,7 @@ if menu_id == "AllMetrics":
         rs01, rs02, rs03, rs04 = st.columns(4)
         with rs01:
             #FILTER BY TEAMS
+            df = dfORIGINAL
             teamlst = list(df['Team'].drop_duplicates())
             
             auxteam = "ALL"
