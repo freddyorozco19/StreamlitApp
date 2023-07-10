@@ -638,9 +638,9 @@ if menu_id == "AllMetrics":
     ax.scatter(x, y)
     st.pyplot(fig, bbox_inches="tight", dpi=600, format="png")
     spines = ['top','bottom','left','right']
-        for x in spines:
-            if x in spines:
-                ax.spines[x].set_color("#FFFFFF")
+    for x in spines:
+        if x in spines:
+            ax.spines[x].set_color("#FFFFFF")
     #st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
   
     
