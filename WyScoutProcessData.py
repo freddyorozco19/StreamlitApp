@@ -622,6 +622,7 @@ if menu_id == "AllMetrics":
             #positions.append(auxpos)
             posselFK = st.multiselect("Seleccionar posición:", positionsFK)
             dfc = df
+            st.write(df)
             #if possel == "ALL":
             #    df = dfc
             #else:
