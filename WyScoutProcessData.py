@@ -645,11 +645,12 @@ if menu_id == "AllMetrics":
     plt.ylabel(metselFK2, color = 'w', fontproperties=prop2, fontsize=15, labelpad=20)
     maxX = max(xsel)+(0.1*xsel)
     maxY = max(ysel)+(0.1*xsel)
-    ax.set_xlim(0, maxX)
-    ax.set_ylim(0, maxY)
+    #ax.set_xlim(0, maxX)
+    #ax.set_ylim(0, maxY)
     #st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
     st.pyplot(fig, bbox_inches="tight", dpi=600, format="png")
-    st.write(max(xsel))
+    st.write(maxX)
+    st.write(type(maxX))
     
     # I usually dump any scripts at the bottom of the page to avoid adding unwanted blank lines
     st.markdown(f'<style>{css}</style>',unsafe_allow_html=True)
