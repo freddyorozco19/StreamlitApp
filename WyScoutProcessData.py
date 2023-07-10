@@ -618,15 +618,15 @@ if menu_id == "AllMetrics":
         with fk03:
             #SELECT POSITION OPTION
             positionsFK = list(df['Pos1'].drop_duplicates())
-            #auxpos = "ALL"
-            #positions.append(auxpos)
+            auxpos1 = "ALL"
+            positionsFK.append(auxpos1)
             posselFK = st.multiselect("Seleccionar posición:", positionsFK)
             dfc = df
             st.write(df)
-            #if possel == "ALL":
-            #    df = dfc
-            #else:
-            df = df[df['Pos1'].isin(possel)]
+            if posselFK == "ALL":
+                df = dfc
+            else:
+                df = df[df['Pos1'].isin(posselFK)]
         submit_buttonFK = st.form_submit_button(label='Aceptar')
     st.write(df)
     fig, ax = plt.subplots(figsize = (12,12), dpi=600)
