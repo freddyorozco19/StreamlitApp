@@ -641,12 +641,12 @@ if menu_id == "AllMetrics":
             ax.spines[x].set_color("#FFFFFF")
     plt.setp(ax.get_yticklabels(), fontproperties=prop2, fontsize=18, color='#FFF')
     plt.setp(ax.get_xticklabels(), fontproperties=prop2, fontsize=20, color=(1,1,1,1))
-    plt.xlabel(xsel, color = 'w', fontproperties=prop2, fontsize=15, labelpad=20)
-    plt.ylabel(ysel, color = 'w', fontproperties=prop2, fontsize=15, labelpad=20)
+    plt.xlabel(metselFK, color = 'w', fontproperties=prop2, fontsize=15, labelpad=20)
+    plt.ylabel(metselFK2, color = 'w', fontproperties=prop2, fontsize=15, labelpad=20)
     #ax.set_xlim(0, xsel.max())
     #st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
     st.pyplot(fig, bbox_inches="tight", dpi=600, format="png")
-
+    st.write(max(xsel))
     
     # I usually dump any scripts at the bottom of the page to avoid adding unwanted blank lines
     st.markdown(f'<style>{css}</style>',unsafe_allow_html=True)
