@@ -600,6 +600,7 @@ if menu_id == "AllMetrics":
     
     st.title("SCATTER PLOT")
     df = dfORIGINAL
+    st.write(df)
     with st.form(key='formScatter'):
         fk01, fk02, fk03 = st.columns(3)
         with fk01:
