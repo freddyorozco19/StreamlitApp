@@ -600,7 +600,6 @@ if menu_id == "AllMetrics":
     
     st.title("SCATTER PLOT")
     df = dfORIGINAL
-    st.write(df)
     with st.form(key='formScatter'):
         fk01, fk02, fk03 = st.columns(3)
         with fk01:
@@ -622,13 +621,11 @@ if menu_id == "AllMetrics":
             positionsFK.append(auxpos1)
             posselFK = st.multiselect("Seleccionar posición:", positionsFK)
             dfc = df
-            st.write(df)
             if posselFK == "ALL":
                 df = dfc
             else:
                 df = df[df['Pos1'].isin(posselFK)]
         submit_buttonFK = st.form_submit_button(label='Aceptar')
-    st.write(df)
     fig, ax = plt.subplots(figsize = (12,12), dpi=600)
     fig.set_facecolor('#050E1E')
     ax.patch.set_facecolor('#050E1E')
@@ -637,7 +634,7 @@ if menu_id == "AllMetrics":
     #st.write(x)
     #st.write(y)
     #st.write(df['Goals']
-    ax.scatter(x, y)
+    ax.scatter(x, y, color="#FF0046")
     
     spines = ['top','bottom','left','right']
     for x in spines:
@@ -645,8 +642,7 @@ if menu_id == "AllMetrics":
             ax.spines[x].set_color("#FFFFFF")
     #st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
     st.pyplot(fig, bbox_inches="tight", dpi=600, format="png")
-    st.write(x)
-    st.write(dfORIGINAL['Goals'])
+
     
     # I usually dump any scripts at the bottom of the page to avoid adding unwanted blank lines
     st.markdown(f'<style>{css}</style>',unsafe_allow_html=True)
