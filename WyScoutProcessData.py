@@ -620,21 +620,21 @@ if menu_id == "AllMetrics":
             auxpos1 = "ALL"
             positionsFK.append(auxpos1)
             posselFK = st.multiselect("Seleccionar posición:", positionsFK)
-            dfc = df
-            if posselFK == "ALL":
-                df = dfc
-            else:
-                df = df[df['Pos1'].isin(posselFK)]
+            #dfc = df
+            #if posselFK == "ALL":
+            #    df = dfc
+            #else:
+            df = df[df['Pos1'].isin(posselFK)]
         submit_buttonFK = st.form_submit_button(label='Aceptar')
     fig, ax = plt.subplots(figsize = (12,12), dpi=600)
-    fig.set_facecolor('#050E1E')
-    ax.patch.set_facecolor('#050E1E')
+    fig.set_facecolor('#121214')
+    ax.patch.set_facecolor('#121214')
     x = df[metselFK]
     y = df[metselFK2]
     #st.write(x)
     #st.write(y)
     #st.write(df['Goals']
-    ax.scatter(x, y, color="#FF0046")
+    ax.scatter(x, y, color="#FF0046", alpha=0.7)
     
     spines = ['top','bottom','left','right']
     for x in spines:
