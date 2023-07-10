@@ -643,7 +643,7 @@ if menu_id == "AllMetrics":
     plt.setp(ax.get_xticklabels(), fontproperties=prop2, fontsize=20, color=(1,1,1,1))
     plt.xlabel(xsel, color = 'w', fontproperties=prop2, fontsize=15, labelpad=20)
     plt.ylabel(ysel, color = 'w', fontproperties=prop2, fontsize=15, labelpad=20)
-    ax.set_Xlim(0, max(xsel)+1)
+    ax.set_Xlim(0, xsel.max())
     #st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
     st.pyplot(fig, bbox_inches="tight", dpi=600, format="png")
 
