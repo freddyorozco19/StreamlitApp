@@ -629,17 +629,21 @@ if menu_id == "AllMetrics":
     fig, ax = plt.subplots(figsize = (12,12), dpi=600)
     fig.set_facecolor('#121214')
     ax.patch.set_facecolor('#121214')
-    x = df[metselFK]
-    y = df[metselFK2]
+    xsel = df[metselFK]
+    yseñ = df[metselFK2]
     #st.write(x)
     #st.write(y)
     #st.write(df['Goals']
-    ax.scatter(x, y, color="#FF0046", alpha=0.7)
-    
+    ax.scatter(xsel, ysel, color="#FF0046", alpha=0.7)
     spines = ['top','bottom','left','right']
     for x in spines:
         if x in spines:
             ax.spines[x].set_color("#FFFFFF")
+    plt.setp(ax.get_yticklabels(), fontproperties=prop2, fontsize=18, color='#FFF')
+    plt.setp(ax.get_xticklabels(), fontproperties=prop2, fontsize=20, color=(1,1,1,1))
+    plt.xlabel(xsel, color = 'w', fontproperties=prop2, fontsize=15, labelpad=20)
+    plt.ylabel(ysel, color = 'w', fontproperties=prop2, fontsize=15, labelpad=20)
+    ax.set_Xlim(0, max(xsel)+1)
     #st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
     st.pyplot(fig, bbox_inches="tight", dpi=600, format="png")
 
