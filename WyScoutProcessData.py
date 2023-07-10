@@ -630,7 +630,7 @@ if menu_id == "AllMetrics":
     fig.set_facecolor('#121214')
     ax.patch.set_facecolor('#121214')
     xsel = df[metselFK]
-    yseñ = df[metselFK2]
+    ysel = df[metselFK2]
     #st.write(x)
     #st.write(y)
     #st.write(df['Goals']
