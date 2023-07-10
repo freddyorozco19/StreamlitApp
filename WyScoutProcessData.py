@@ -643,7 +643,7 @@ if menu_id == "AllMetrics":
     plt.setp(ax.get_xticklabels(), fontproperties=prop2, fontsize=20, color=(1,1,1,1))
     plt.xlabel(metselFK, color = 'w', fontproperties=prop2, fontsize=15, labelpad=20)
     plt.ylabel(metselFK2, color = 'w', fontproperties=prop2, fontsize=15, labelpad=20)
-    maxX = max(xsel)+(0.1*xsel)
+    maxX = max(xsel)
     maxY = max(ysel)+(0.1*xsel)
     #ax.set_xlim(0, maxX)
     #ax.set_ylim(0, maxY)
