@@ -644,7 +644,7 @@ if menu_id == "AllMetrics":
     #st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
     st.pyplot(fig, bbox_inches="tight", dpi=600, format="png")
     st.write(x)
-    st.write(df['Goals'])
+    st.write(dfORIGINAL['Goals'])
     
     # I usually dump any scripts at the bottom of the page to avoid adding unwanted blank lines
     st.markdown(f'<style>{css}</style>',unsafe_allow_html=True)
