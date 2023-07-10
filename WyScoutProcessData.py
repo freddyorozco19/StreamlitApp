@@ -626,7 +626,7 @@ if menu_id == "AllMetrics":
             #else:
             df = df[df['Pos1'].isin(possel)]
         submit_buttonFK = st.form_submit_button(label='Aceptar')
-     
+    st.write(df)
     fig, ax = plt.subplots(figsize = (12,12), dpi=600)
     fig.set_facecolor('#050E1E')
     ax.patch.set_facecolor('#050E1E')
