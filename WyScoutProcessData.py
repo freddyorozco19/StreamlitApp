@@ -932,39 +932,40 @@ if menu_id == "PlayerStats":
             df = df[df['Age'] >= agesel[0]]
             #SELECT MINS
             minsel = st.slider('Filtro de minutos (%):', 0, 100)
+            #FILTER BY MINUTES
+            maxmin = df['Minutes played'].max() + 5
+            minsel1 = (minsel*maxmin)/100
+            df = df[df['Minutes played'] >= minsel1].reset_index()
             #SELECT POSITION OPTION
             positions = list(df['Pos1'].drop_duplicates())
             positions.append("ALL")
             #positions.sort()
             seldf0 = st.selectbox("Filtrar por posición:", positions)
+            #FILTER BY POSITIONS
+            dftres = df
+            if seldf0 == 'ALL':
+                df = dftres
+            else:
+                df = dftres[dftres['Pos1'] == seldf0].reset_index()
+                dfax = df[['Player', 'Team', 'Pos1', 'Pos2', 'Age']]
+            dfccc = df
+            dfcuatro = df
             #SELECT TEAM
             teams = list(df['Team'].drop_duplicates())
             teamsel1 = st.selectbox('Selecciona un equipo:', teams)
+            #FILTER BY TEAMS
+            df = df[df['Team'] == teamsel1]
             #SELECT PLAYER
             players = list(df['Player'].drop_duplicates())            
             playersel = st.selectbox('Selecciona un jugador:', players)
-                
+            #FILTER BY PLAYER
+            df = df[df['Player'] == playersel]
+                            
             submit_button3 = st.form_submit_button(label='Aceptar')
 
     
 
-    #FILTER BY MINUTES
-    maxmin = df['Minutes played'].max() + 5
-    minsel1 = (minsel*maxmin)/100
-    df = df[df['Minutes played'] >= minsel1].reset_index()
-    #FILTER BY POSITIONS
-    dftres = df
-    if seldf0 == 'ALL':
-        df = dftres
-    else:
-        df = dftres[dftres['Pos1'] == seldf0].reset_index()
-        dfax = df[['Player', 'Team', 'Pos1', 'Pos2', 'Age']]
-    dfccc = df
-    dfcuatro = df
-    #FILTER BY TEAMS
-    df = df[df['Team'] == teamsel1]
-    #FILTER BY PLAYER
-    df = df[df['Player'] == playersel]
+
             
     st.markdown("<style> div { text-align: center } </style>", unsafe_allow_html=True)
     st.markdown("""---""")
