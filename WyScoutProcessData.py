@@ -702,7 +702,7 @@ if menu_id == "ActionsData":
             
     st.markdown("<style> div { text-align: center } </style>", unsafe_allow_html=True)
     st.markdown("""---""")
-    st.title(Option.str.upper)
+    st.title(Option.upper())
     if Option == "Shots Data":
         datos = tablecode.split('Index__shots___B7aUA">')
         datos = datos[1]
