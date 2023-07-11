@@ -959,3 +959,5 @@ if menu_id == "PlayerStats":
             
     st.markdown("<style> div { text-align: center } </style>", unsafe_allow_html=True)
     st.markdown("""---""")
+    st.title("PLAYER STATS")
+    st.write(df)
