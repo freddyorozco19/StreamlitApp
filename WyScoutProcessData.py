@@ -785,6 +785,12 @@ if menu_id == "ActionsData":
         dfT = dfT.replace("d800ff", "Key")
         dfT = dfT.replace("0876ff", "Successful")
         dfT = dfT.replace("909090", "Unsuccessful")
+        dfT['Player'] = Player
+        dfT['Competition'] = Competition
+        dfT['Match'] = Match
+        dfT['DateGame'] = Date
+        dfT['Matchday'] = Matchday
+        dfT = dfT[["Competition", "Matchday", "DateGame", "Match", "Player", "" + Option + " ID", "Status", "X1", "Y1"]]
         st.write(dfT)
         but0, but1 = st.columns(2)
         with but0:
@@ -861,7 +867,7 @@ if menu_id == "ActionsData":
         dfwon4 = len(dfwon)
         dfT4 = len(dfT)
         #st.write(type(dfT))
-        st.metric("Efectividad (%)", round((dfwon4*100)/dfT4), 2)
+        st.metric("Efectividad (%)", round((dfwon4*100)/dfT4))
 
     #st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
     css='''
