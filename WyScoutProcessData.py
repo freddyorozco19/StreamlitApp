@@ -683,9 +683,9 @@ if menu_id == "ActionsData":
                 Player = st.text_input("Player:", key="player")
             rs01, rs02 = st.columns(2)
             with rs01:
-                Numbergame = st.text_input("Numbergame:", key="numbergame")
+                Matchday = st.text_input("Matchday:", key="matchday")
             with rs02:
-                Game = st.text_input("Game:", key="game")   
+                Match = st.text_input("Match:", key="match")   
             rs03, rs04 = st.columns(2)
             with rs03:
                 Competition = st.text_input("Competition:", key="competition")   
@@ -696,7 +696,7 @@ if menu_id == "ActionsData":
                          'Defensive Duels Data', 'Offensive Duels Data', 'Recoveries Data', 'Progressive Runs Data', 
                          'Received Passes Data']
             
-            Option = st.selectbox('Seleccione Modo Consulta:', VizOption)
+            Option = st.selectbox('Query Mode:', VizOption)
                 
             submit_button2 = st.form_submit_button(label='Aceptar')
             
