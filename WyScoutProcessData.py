@@ -85,7 +85,6 @@ st.markdown(
 menu_data = [
     {'id': "AllMetrics", 'label':"AllMetrics"},
     {'id': "ActionsData", 'label':"Extract ActionsData"},
-    {'id': "PassesData", 'label':"Extract PassesData"},
     {'id': "PlayerStats", 'label':"Player Stats"},
     {'id': "SimilarityTool", 'label':"SimilarityTool"}
 ]
