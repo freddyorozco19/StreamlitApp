@@ -919,30 +919,41 @@ if menu_id == "PlayerStats":
         st.markdown("""---""")    
             
         with st.form(key='form3'):
-                                
-            tablecode = st.text_area('Paste your source code')
-            
-            rs00, rs10 = st.columns(2)
-            with rs00:
-                Filename = st.text_input("Filename", key="filename")   
-            with rs10:
-                Player = st.text_input("Player:", key="player")
-            rs01, rs02 = st.columns(2)
-            with rs01:
-                Matchday = st.text_input("Matchday:", key="matchday")
-            with rs02:
-                Match = st.text_input("Match:", key="match")   
-            rs03, rs04 = st.columns(2)
-            with rs03:
-                Competition = st.text_input("Competition:", key="competition")   
-            with rs04:
-                Date = st.text_input("Date Game:", key="date")   
-            
-            VizOption = ['Actions Data', 'Passes Data', 'Shots Data', 'Dribbles Data', 'Duels Data', 'Aerial Duels Data', 
-                         'Defensive Duels Data', 'Offensive Duels Data', 'Recoveries Data', 'Progressive Runs Data', 
-                         'Received Passes Data']
-            
-            Option = st.selectbox('Query Mode:', VizOption)
+            #SELECT DATA
+            Dataframe = st.file_uploader("Cargar archivo:", type="xlsx")
+            if Table is not None:
+                df = pd.read_excel(Dataframe)
+            #SELECT AGE
+            agesel = st.slider('Filtro de edad:', 15, 50, (15, 50), 1)   
+            df = df[df['Age'] <= agesel[1]]
+            df = df[df['Age'] >= agesel[0]]
+            #SELECT MINS
+            minsel = st.slider('Filtro de minutos (%):', 0, 100)
+            maxmin = df['Minutes played'].max() + 5
+            minsel1 = (minsel*maxmin)/100
+            df = df[df['Minutes played'] >= minsel1].reset_index()
+            #SELECT POSITION OPTION
+            positions = list(df['Pos1'].drop_duplicates())
+            positions.append("ALL")
+            positions.sort()
+            seldf0 = st.selectbox("Filtrar por posición:", positions)
+            dftres = df
+            if seldf0 == 'ALL':
+                df = dftres
+            else:
+                df = dftres[dftres['Pos1'] == seldf0].reset_index()
+                dfax = df[['Player', 'Team', 'Pos1', 'Pos2', 'Age']]
+            #st.write(df)
+            dfccc = df
+            dfcuatro = df
+            #SELECT TEAM
+            teams = list(df['Team'].drop_duplicates())
+            teamsel1 = st.selectbox('Selecciona un equipo:', teams)
+            df = df[df['Team'] == teamsel1]
+            #SELECT PLAYER
+            players = list(df['Player'].drop_duplicates())            
+            playersel = st.selectbox('Selecciona un jugador:', players)
+            df = df[df['Player'] == playersel]
                 
             submit_button3 = st.form_submit_button(label='Aceptar')
             
