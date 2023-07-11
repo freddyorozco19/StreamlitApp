@@ -2,7 +2,8 @@
 """
 Created on Sat Apr  1 03:14:41 2023
 
-@author: ACER
+@author: Freddy J. Orozco R.
+Powered: Win Stats LATAM
 """
 
 import streamlit as st
