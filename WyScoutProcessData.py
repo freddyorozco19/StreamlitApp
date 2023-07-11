@@ -86,8 +86,8 @@ menu_data = [
     {'id': "AllMetrics", 'label':"AllMetrics"},
     {'id': "ActionsData", 'label':"Extract ActionsData"},
     {'id': "PassesData", 'label':"Extract PassesData"},
-    {'id': "ProMatchStats", 'label':"ProMatchStats"},
-    {'id': "Dashboard", 'icon': "fas fa-tachometer-alt", 'label':"Dashboard",'ttip':"I'm the Dashboard tooltip!"} #can add a tooltip message]
+    {'id': "PlayerStats", 'label':"Player Stats"},
+    {'id': "SimilarityTool", 'icon': "fas fa-tachometer-alt", 'label':"SimilarityTool",'ttip':"I'm the Dashboard tooltip!"} #can add a tooltip message]
 ]
 over_theme = {'txc_inactive': '#FFFFFF'}
 menu_id = hc.nav_bar(
@@ -562,8 +562,8 @@ if menu_id == "AllMetrics":
     with mainrow0:
         
         fig, ax = plt.subplots(figsize = (12,12), dpi=600)
-        fig.set_facecolor('#050E1E')
-        ax.patch.set_facecolor('#050E1E')
+        fig.set_facecolor('#121214')
+        ax.patch.set_facecolor('#121214')
         df = df.sort_values(by=[metsel], ascending=True)
         dfZinf = df[['Player', 'Team', 'Pos0', 'Age', 'Matches played', '90s']]
         dfZ2 = df[metsel2]
@@ -651,8 +651,155 @@ if menu_id == "AllMetrics":
     ax.set_ylim(0, maxY)
     #st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
     st.pyplot(fig, bbox_inches="tight", dpi=600, format="png")
-    st.write(maxX)
-    st.write(type(maxX))
     
     # I usually dump any scripts at the bottom of the page to avoid adding unwanted blank lines
     st.markdown(f'<style>{css}</style>',unsafe_allow_html=True)
+
+###
+if menu_id == "ActionsData":
+    with st.sidebar:
+        with open("C:/Users/ACER/Documents/WinStats/Resources/win.png", "rb") as f:
+            data = base64.b64encode(f.read()).decode("utf-8")
+            
+            st.sidebar.markdown(
+                f"""
+                <div style="display:table;margin-top:-20%">
+                <img src="data:image/png;base64,{data}" width="300">
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+            
+        st.markdown("""---""")    
+            
+        with st.form(key='form2'):
+                                
+            tablecode = st.text_area('Paste your source code')
+            
+            rs00, rs10 = st.columns(2)
+            with rs00:
+                Filename = st.text_input("Filename", key="filename")   
+            with rs10:
+                Player = st.text_input("Player:", key="player")
+            rs01, rs02 = st.columns(2)
+            with rs01:
+                Numbergame = st.text_input("Numbergame:", key="numbergame")
+            with rs02:
+                Game = st.text_input("Game:", key="game")   
+            rs03, rs04 = st.columns(2)
+            with rs03:
+                Competition = st.text_input("Competition:", key="competition")   
+            with rs04:
+                Date = st.text_input("Date:", key="date")   
+            
+            VizOption = ['Actions Data', 'Shots Data', 'Dribbles Data', 'Duels Data', 'Aerial Duels Data', 
+                         'Defensive Duels Data', 'Offensive Duels Data', 'Recoveries Data', 'Progressive Runs Data', 
+                         'Received Passes Data']
+            
+            Option = st.selectbox('Seleccione Modo Consulta:', VizOption)
+                
+            submit_button2 = st.form_submit_button(label='Aceptar')
+            
+    st.markdown("<style> div { text-align: center } </style>", unsafe_allow_html=True)
+    st.markdown("""---""")
+    if Option == "Shots Data":
+        datos = tablecode.split('Index__shots___B7aUA">')
+        datos = datos[1]
+        datos = datos.split("xG")
+        df = pd.DataFrame(datos, columns=["EVENT"])
+        df.drop(df.tail(1).index,inplace=True)
+        df = df.reset_index()
+        df = df.drop(['index'], axis=1)
+        dfc = df
+        dfdiv = df['EVENT'].str.split("width:", expand=True)
+        dfdiv.columns = ['Event', 'Coordenadas']
+        dfcoord = dfdiv['Coordenadas'].str.split("<span>", expand=True)
+        dfcoord.columns = ['Coord', 'xG']
+        dfcoord['xG'] = dfcoord['xG'].str[44:]
+        dfcoordxg = dfcoord.drop(['Coord'], axis=1)
+        dfcoord = dfcoord['Coord'].str.split("%;", expand=True)
+        dfcoord.columns = ['ONE', 'X1', 'Y1', 'TWO']
+        dfcoord = dfcoord.drop(['ONE', 'TWO'], axis=1)
+        dfcoord['X1'] = dfcoord['X1'].map(lambda x: x.lstrip('left: ').rstrip(''))
+        dfcoord['Y1'] = dfcoord['Y1'].map(lambda x: x.lstrip('top: ').rstrip(''))
+        dfcoor = pd.concat([dfcoordxg, dfcoord], axis=1)
+        dfevent = dfdiv['Event'].str.split("Index__shot", expand=True)
+        dfevent.columns = ['one', 'status']
+        dfevent = dfevent.drop(['one'], axis=1)
+        dfevent = dfevent.reset_index()
+        dfevent['status'] = dfevent['status'].str[3:-17]
+        dfevent = dfevent['status'].str.split("Index__", expand=True)
+        dfevent.columns = ['one', 'status']
+        dfevent = dfevent.drop(['one'], axis=1)
+        dfevent = dfevent.reset_index()
+        dfevents = dfevent['status']
+        dfT = pd.concat([dfcoor, dfevents], axis=1)
+        st.write(dfT)
+        but0, but1 = st.columns(2)
+        with but0:
+            name = Filename
+            df_xlsx = to_excel(dfT)
+            st.download_button(label='Descargar Archivo Excel',
+                               data=df_xlsx,
+                               file_name= ""+ name +".xlsx")
+    
+        with but1:
+            df_csv = convert_df(dfT)
+            st.download_button(label="Descargar Archivo CSV",
+                               data=df_csv,
+                               file_name=""+ name +".csv",
+                               mime='text/csv')
+    else:
+        datos = tablecode.split("<div")
+        df = pd.DataFrame([datos])
+        df = pd.DataFrame(datos, columns=["EVENT"])
+        df.drop(df.head(2).index,inplace=True)
+        df = df.reset_index()
+        df = df.drop(['index'], axis=1)
+        dfc = df
+        dfdiv = df['EVENT'].str.split("style=", expand=True)
+        dfdiv.columns = ['Event', 'Coordenadas']
+        dfdiv['Coordenadas'] = dfdiv['Coordenadas'].str[1:-22]
+        dfdiv['Event'] = dfdiv['Event'].str[24:-10]
+        dfcoord = dfdiv['Coordenadas'].str.split(';', expand=True)
+        dfevent = dfdiv['Event'].str.split('Index_', expand=True)
+        dfcoord.columns = ['X1', 'Y1', 'K'] 
+        dfcoord = dfcoord.drop(['K'], axis=1)
+        dfcoord['X1'] = dfcoord['X1'].str[5:-1]
+        dfcoord['Y1'] = dfcoord['Y1'].str[5:]
+        dfevent.columns = ["" + Option + " ID", 'Status']
+        dfevent['Status'] = dfevent['Status'].str[1:]
+        dfT = pd.concat([dfevent, dfcoord], axis=1)
+        dfT['Y1'] = dfT['Y1'].map(lambda x: x.lstrip('').rstrip('%'))
+        dfT['Player'] = Player
+        dfT['Competition'] = Competition
+        dfT['Game'] = Game
+        dfT['DateGame'] = Date
+        dfT['NumberGame'] = Numbergame
+        dfT = dfT[["Player", "Competition", "DateGame", "Game", "NumberGame", "" + Option + " ID", "Status", "X1", "Y1"]]
+        st.write(dfT)
+        dfwon = dfT[dfT['Status'] == 'won'].reset_index()
+        dflost = dfT[dfT['Status'] == 'lost'].reset_index()
+        
+        but0, but1 = st.columns(2)
+        with but0:
+            name = Filename
+            df_xlsx = to_excel(dfT)
+            st.download_button(label='Descargar Archivo Excel',
+                               data=df_xlsx,
+                               file_name= ""+ name +".xlsx")
+    
+        with but1:
+            df_csv = convert_df(dfT)
+            st.download_button(label="Descargar Archivo CSV",
+                               data=df_csv,
+                               file_name=""+ name +".csv",
+                               mime='text/csv')
+        
+        r1, r2, r3 = st.columns(3)
+        with r1:
+            st.metric("Acciones", len(dfT))
+        with r2:
+            st.metric("Exitosas", len(dfwon))
+        with r3:
+            st.metric("Fallidas", len(dflost))
