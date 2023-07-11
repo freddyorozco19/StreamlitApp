@@ -85,10 +85,10 @@ st.markdown(
     
 # specify the primary menu definition
 menu_data = [
-    {'id': "AllMetrics", 'label':"AllMetrics"},
+    {'id': "AllMetrics", 'label':"Metrics"},
     {'id': "ExtractData", 'label':"Extract Data"},
     {'id': "PlayerStats", 'label':"Player Stats"},
-    {'id': "SimilarityTool", 'label':"SimilarityTool"}
+    {'id': "SimilarityTool", 'label':"Similarity Tool"}
 ]
 over_theme = {'txc_inactive': '#FFFFFF'}
 menu_id = hc.nav_bar(
@@ -656,7 +656,10 @@ if menu_id == "AllMetrics":
     # I usually dump any scripts at the bottom of the page to avoid adding unwanted blank lines
     st.markdown(f'<style>{css}</style>',unsafe_allow_html=True)
 
-###
+############################################################################################################################################################################################################################
+############################################################################################################################################################################################################################
+############################################################################################################################################################################################################################
+
 if menu_id == "ExtractData":
     with st.sidebar:
         with open("Resources/win.png", "rb") as f:
@@ -896,4 +899,52 @@ if menu_id == "ExtractData":
     '''
     st.markdown(f'<style>{css}</style>',unsafe_allow_html=True)
 ###
-
+############################################################################################################################################################################################################################
+############################################################################################################################################################################################################################
+############################################################################################################################################################################################################################
+if menu_id == "Player Stats":
+    with st.sidebar:
+        with open("Resources/win.png", "rb") as f:
+            data = base64.b64encode(f.read()).decode("utf-8")
+            
+            st.sidebar.markdown(
+                f"""
+                <div style="display:table;margin-top:-20%">
+                <img src="data:image/png;base64,{data}" width="300">
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+            
+        st.markdown("""---""")    
+            
+        with st.form(key='form3'):
+                                
+            tablecode = st.text_area('Paste your source code')
+            
+            rs00, rs10 = st.columns(2)
+            with rs00:
+                Filename = st.text_input("Filename", key="filename")   
+            with rs10:
+                Player = st.text_input("Player:", key="player")
+            rs01, rs02 = st.columns(2)
+            with rs01:
+                Matchday = st.text_input("Matchday:", key="matchday")
+            with rs02:
+                Match = st.text_input("Match:", key="match")   
+            rs03, rs04 = st.columns(2)
+            with rs03:
+                Competition = st.text_input("Competition:", key="competition")   
+            with rs04:
+                Date = st.text_input("Date Game:", key="date")   
+            
+            VizOption = ['Actions Data', 'Passes Data', 'Shots Data', 'Dribbles Data', 'Duels Data', 'Aerial Duels Data', 
+                         'Defensive Duels Data', 'Offensive Duels Data', 'Recoveries Data', 'Progressive Runs Data', 
+                         'Received Passes Data']
+            
+            Option = st.selectbox('Query Mode:', VizOption)
+                
+            submit_button3 = st.form_submit_button(label='Aceptar')
+            
+    st.markdown("<style> div { text-align: center } </style>", unsafe_allow_html=True)
+    st.markdown("""---""")
