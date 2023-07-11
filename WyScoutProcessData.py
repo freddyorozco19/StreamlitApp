@@ -805,7 +805,8 @@ if menu_id == "ActionsData":
     with r3:
         st.metric("Fallidas", len(dflost))
 
-    st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
+    #st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
+    st.markdown("<style> div { text-align: center } </style>", unsafe_allow_html=True)
 ###
 if menu_id == 'PassesData':
     with st.sidebar:
