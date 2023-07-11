@@ -796,7 +796,7 @@ if menu_id == "ActionsData":
                                data=df_csv,
                                file_name=""+ name +".csv",
                                mime='text/csv')
-        
+    st.markdown("<style> div { text-align: center } </style>", unsafe_allow_html=True)
     r1, r2, r3 = st.columns(3)
     with r1:
         st.metric("Acciones", len(dfT))
@@ -806,7 +806,8 @@ if menu_id == "ActionsData":
         st.metric("Fallidas", len(dflost))
 
     #st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
-    st.markdown("<style> div { text-align: center } </style>", unsafe_allow_html=True)
+    
+    st.markdown(f'<style>{css}</style>',unsafe_allow_html=True)
 ###
 if menu_id == 'PassesData':
     with st.sidebar:
