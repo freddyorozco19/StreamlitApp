@@ -861,7 +861,7 @@ if menu_id == "ActionsData":
         dfwon4 = len(dfwon)
         dfT4 = len(dfT)
         #st.write(type(dfT))
-        st.metric("Efectividad (%)", (dfwon4*100)/dfT4)
+        st.metric("Efectividad (%)", round((dfwon4*100)/dfT4), 2)
 
     #st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
     css='''
