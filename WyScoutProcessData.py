@@ -797,7 +797,7 @@ if menu_id == "ActionsData":
                                file_name=""+ name +".csv",
                                mime='text/csv')
     st.markdown("<style> div { text-align: center } </style>", unsafe_allow_html=True)
-    r1, r2, r3, r4 = st.columns(3)
+    r1, r2, r3, r4 = st.columns(4)
     with r1:
         st.metric("Acciones", len(dfT))
     with r2:
