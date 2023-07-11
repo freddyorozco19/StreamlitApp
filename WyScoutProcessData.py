@@ -921,6 +921,8 @@ if menu_id == "PlayerStats":
         with st.form(key='form3'):
             #SELECT DATA
             Dataframe = st.file_uploader("Cargar archivo:", type="xlsx")
+            if Dataframe is not None:
+                df = pd.read_excel(Dataframe)
             #SELECT AGE
             agesel = st.slider('Filtro de edad:', 15, 50, (15, 50), 1)   
             #SELECT MINS
@@ -939,8 +941,7 @@ if menu_id == "PlayerStats":
                 
             submit_button3 = st.form_submit_button(label='Aceptar')
 
-    if Dataframe is not None:
-        df = pd.read_excel(Dataframe)
+    
     #FILTER BY AGE
     df = df[df['Age'] <= agesel[1]]
     df = df[df['Age'] >= agesel[0]]
