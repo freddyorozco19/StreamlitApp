@@ -932,7 +932,7 @@ if menu_id == "PlayerStats":
             #SELECT POSITION OPTION
             positions = list(df['Pos1'].drop_duplicates())
             positions.append("ALL")
-            positions.sort()
+            #positions.sort()
             seldf0 = st.selectbox("Filtrar por posición:", positions)
             #SELECT TEAM
             teams = list(df['Team'].drop_duplicates())
