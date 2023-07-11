@@ -87,7 +87,7 @@ menu_data = [
     {'id': "ActionsData", 'label':"Extract ActionsData"},
     {'id': "PassesData", 'label':"Extract PassesData"},
     {'id': "PlayerStats", 'label':"Player Stats"},
-    {'id': "SimilarityTool", 'icon': "fas fa-tachometer-alt", 'label':"SimilarityTool",'ttip':"I'm the Dashboard tooltip!"} #can add a tooltip message]
+    {'id': "SimilarityTool", 'label':"SimilarityTool"}
 ]
 over_theme = {'txc_inactive': '#FFFFFF'}
 menu_id = hc.nav_bar(
@@ -797,13 +797,15 @@ if menu_id == "ActionsData":
                                file_name=""+ name +".csv",
                                mime='text/csv')
     st.markdown("<style> div { text-align: center } </style>", unsafe_allow_html=True)
-    r1, r2, r3 = st.columns(3)
+    r1, r2, r3, r4 = st.columns(3)
     with r1:
         st.metric("Acciones", len(dfT))
     with r2:
         st.metric("Exitosas", len(dfwon))
     with r3:
         st.metric("Fallidas", len(dflost))
+    with r4:
+        st.metric("Efectividad (%)", (dfwon*100)/dfT)
 
     #st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
     css='''
