@@ -726,16 +726,23 @@ if menu_id == "ExtractData":
         dfcoord['Y1'] = dfcoord['Y1'].map(lambda x: x.lstrip('top: ').rstrip(''))
         dfcoor = pd.concat([dfcoordxg, dfcoord], axis=1)
         dfevent = dfdiv['Event'].str.split("Index__shot", expand=True)
-        dfevent.columns = ['one', 'status']
+        dfevent.columns = ['one', 'Status']
         dfevent = dfevent.drop(['one'], axis=1)
         dfevent = dfevent.reset_index()
-        dfevent['status'] = dfevent['status'].str[3:-17]
-        dfevent = dfevent['status'].str.split("Index__", expand=True)
-        dfevent.columns = ['one', 'status']
+        dfevent['Status'] = dfevent['Status'].str[3:-17]
+        dfevent = dfevent['Status'].str.split("Index__", expand=True)
+        dfevent.columns = ['one', 'Status']
         dfevent = dfevent.drop(['one'], axis=1)
         dfevent = dfevent.reset_index()
-        dfevents = dfevent['status']
+        dfevents = dfevent['Status']
         dfT = pd.concat([dfcoor, dfevents], axis=1)
+        dfT['Player'] = Player
+        dfT['Competition'] = Competition
+        dfT['Match'] = Match
+        dfT['DateGame'] = Date
+        dfT['Matchday'] = Matchday
+        dfT['Event'] = Option[:-5]
+        dfT = dfT[["Competition", "Matchday", "DateGame", "Match", "Player", "Event", "Status", "xG", "X1", "Y1"]]
         st.write(dfT)
         but0, but1 = st.columns(2)
         with but0:
