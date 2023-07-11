@@ -774,10 +774,10 @@ if menu_id == "ActionsData":
         dfT['Y1'] = dfT['Y1'].map(lambda x: x.lstrip('').rstrip('%'))
         dfT['Player'] = Player
         dfT['Competition'] = Competition
-        dfT['Game'] = Game
+        dfT['Match'] = Match
         dfT['DateGame'] = Date
-        dfT['NumberGame'] = Numbergame
-        dfT = dfT[["Player", "Competition", "DateGame", "Game", "NumberGame", "" + Option + " ID", "Status", "X1", "Y1"]]
+        dfT['Matchday'] = Matchday
+        dfT = dfT[["Player", "Competition", "DateGame", "Match", "Matchday", "" + Option + " ID", "Status", "X1", "Y1"]]
         st.write(dfT)
         dfwon = dfT[dfT['Status'] == 'won'].reset_index()
         dflost = dfT[dfT['Status'] == 'lost'].reset_index()
