@@ -692,7 +692,7 @@ if menu_id == "ActionsData":
             with rs04:
                 Date = st.text_input("Date Game:", key="date")   
             
-            VizOption = ['Actions Data', 'Shots Data', 'Dribbles Data', 'Duels Data', 'Aerial Duels Data', 
+            VizOption = ['Actions Data', 'Passes Data', 'Shots Data', 'Dribbles Data', 'Duels Data', 'Aerial Duels Data', 
                          'Defensive Duels Data', 'Offensive Duels Data', 'Recoveries Data', 'Progressive Runs Data', 
                          'Received Passes Data']
             
@@ -750,6 +750,53 @@ if menu_id == "ActionsData":
                                data=df_csv,
                                file_name=""+ name +".csv",
                                mime='text/csv')
+    elif Option == "Passes Data":
+
+        datos = tablecode.split("<g>")
+        df = pd.DataFrame(datos, columns=["EVENT"])
+        df.drop(df.head(1).index,inplace=True)
+        df = df.reset_index()
+        df = df.drop(['index'], axis=1)
+        dfc = df
+        df['EVENT'] = df['EVENT'].str[257:]
+        dfdiv = df['EVENT'].str.split("marker-end=", expand=True)
+        dfdiv.columns = ['Evento', 'Coordenadas']
+        dfdiv['Evento'] = dfdiv['Evento'].str[:-68]
+        dfdiv['Coordenadas'] = dfdiv['Coordenadas'].str[25:]
+        dfevent = dfdiv['Evento']
+        dfcoord = dfdiv['Coordenadas'].str.split("stroke-opacity", expand=True)
+        dfcoord.columns = ['Other', 'Coord']
+        dfcoord = dfcoord.drop(['Other'],axis=1)
+        dfcoord['Coord'] = dfcoord['Coord'].str[5:-13]
+        dfcoord = dfcoord['Coord'].str.split("=", expand=True)
+        dfcoord.columns = ['one', 'X1', 'Y1', 'X2', 'Y2']
+        dfcoord = dfcoord.drop(['one'], axis=1)
+        dfcoord['X1'] = dfcoord['X1'].str[1:-4]
+        dfcoord['Y1'] = dfcoord['Y1'].str[1:-4]
+        dfcoord['X2'] = dfcoord['X2'].str[1:-4]
+        dfcoord['Y2'] = dfcoord['Y2'].str[1:]
+        dfcoordd = dfcoord['Y2'].str.split('"><', expand=True)
+        dfcoordd.columns=['Y2', 'zer']
+        dfcoordd = dfcoordd.drop(['zer'],axis=1)
+        dfcoord = dfcoord.drop(['Y2'],axis=1)
+        dfcoor = pd.concat([dfcoord, dfcoordd], axis=1)
+        dfT = pd.concat([dfevent, dfcoor], axis=1)
+        st.write(dfT)
+        but0, but1 = st.columns(2)
+        with but0:
+            name = Filename
+            df_xlsx = to_excel(dfT)
+            st.download_button(label='Descargar Archivo Excel',
+                               data=df_xlsx,
+                               file_name= ""+ name +".xlsx")
+    
+        with but1:
+            df_csv = convert_df(dfT)
+            st.download_button(label="Descargar Archivo CSV",
+                               data=df_csv,
+                               file_name=""+ name +".csv",
+                               mime='text/csv') 
+        
     else:
         datos = tablecode.split("<div")
         df = pd.DataFrame([datos])
@@ -829,89 +876,4 @@ if menu_id == "ActionsData":
     '''
     st.markdown(f'<style>{css}</style>',unsafe_allow_html=True)
 ###
-if menu_id == 'PassesData':
-    with st.sidebar:
-        with open("Resources/win.png", "rb") as f:
-            data = base64.b64encode(f.read()).decode("utf-8")
-            
-            st.sidebar.markdown(
-                f"""
-                <div style="display:table;margin-top:-20%">
-                <img src="data:image/png;base64,{data}" width="300">
-                </div>
-                """,
-                unsafe_allow_html=True,
-            )
-            
-        st.markdown("""---""")    
-            
-        with st.form(key='form2'):
-                
-            #Table = st.file_uploader("Choose a excel file", type = ['xlsx'], accept_multiple_files=False)
-                
-            tablecode = st.text_area('Paste your source code')
 
-
-            Filename = st.text_input("Ingrese Nombre del Archivo",
-                                     key="filename"
-                                     )   
-
-            Matchday = st.text_input("Ingrese Matchday:",
-                                     key="matchday"
-                                     )   
-
-            Competition = st.text_input("Ingrese Competition:",
-                                        key="competition"
-                                        )   
-
-            Date = st.text_input("Ingrese Date:",
-                                 key="date"
-                                 )   
-            
-            #Option = st.selectbox('Seleccione Modo Consulta:', ('Actions Data', 'Duels Data', 'Received Passes Data'))
-                
-            submit_button2 = st.form_submit_button(label='Aceptar')
-    datos = tablecode.split("<g>")
-    df = pd.DataFrame(datos, columns=["EVENT"])
-    df.drop(df.head(1).index,inplace=True)
-    df = df.reset_index()
-    df = df.drop(['index'], axis=1)
-    dfc = df
-    df['EVENT'] = df['EVENT'].str[257:]
-    dfdiv = df['EVENT'].str.split("marker-end=", expand=True)
-    dfdiv.columns = ['Evento', 'Coordenadas']
-    dfdiv['Evento'] = dfdiv['Evento'].str[:-68]
-    dfdiv['Coordenadas'] = dfdiv['Coordenadas'].str[25:]
-    dfevent = dfdiv['Evento']
-    dfcoord = dfdiv['Coordenadas'].str.split("stroke-opacity", expand=True)
-    dfcoord.columns = ['Other', 'Coord']
-    dfcoord = dfcoord.drop(['Other'],axis=1)
-    dfcoord['Coord'] = dfcoord['Coord'].str[5:-13]
-    dfcoord = dfcoord['Coord'].str.split("=", expand=True)
-    dfcoord.columns = ['one', 'X1', 'Y1', 'X2', 'Y2']
-    dfcoord = dfcoord.drop(['one'], axis=1)
-    dfcoord['X1'] = dfcoord['X1'].str[1:-4]
-    dfcoord['Y1'] = dfcoord['Y1'].str[1:-4]
-    dfcoord['X2'] = dfcoord['X2'].str[1:-4]
-    dfcoord['Y2'] = dfcoord['Y2'].str[1:]
-    dfcoordd = dfcoord['Y2'].str.split('"><', expand=True)
-    dfcoordd.columns=['Y2', 'zer']
-    dfcoordd = dfcoordd.drop(['zer'],axis=1)
-    dfcoord = dfcoord.drop(['Y2'],axis=1)
-    dfcoor = pd.concat([dfcoord, dfcoordd], axis=1)
-    dfT = pd.concat([dfevent, dfcoor], axis=1)
-    st.write(dfT)
-    but0, but1 = st.columns(2)
-    with but0:
-        name = Filename
-        df_xlsx = to_excel(dfT)
-        st.download_button(label='Descargar Archivo Excel',
-                           data=df_xlsx,
-                           file_name= ""+ name +".xlsx")
-
-    with but1:
-        df_csv = convert_df(dfT)
-        st.download_button(label="Descargar Archivo CSV",
-                           data=df_csv,
-                           file_name=""+ name +".csv",
-                           mime='text/csv') 
