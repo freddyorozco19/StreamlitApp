@@ -86,7 +86,7 @@ st.markdown(
 # specify the primary menu definition
 menu_data = [
     {'id': "AllMetrics", 'label':"AllMetrics"},
-    {'id': "ActionsData", 'label':"Extract ActionsData"},
+    {'id': "ExtractData", 'label':"Extract Data"},
     {'id': "PlayerStats", 'label':"Player Stats"},
     {'id': "SimilarityTool", 'label':"SimilarityTool"}
 ]
@@ -657,7 +657,7 @@ if menu_id == "AllMetrics":
     st.markdown(f'<style>{css}</style>',unsafe_allow_html=True)
 
 ###
-if menu_id == "ActionsData":
+if menu_id == "ExtractData":
     with st.sidebar:
         with open("Resources/win.png", "rb") as f:
             data = base64.b64encode(f.read()).decode("utf-8")
@@ -752,7 +752,6 @@ if menu_id == "ActionsData":
                                file_name=""+ name +".csv",
                                mime='text/csv')
     elif Option == "Passes Data":
-
         datos = tablecode.split("<g>")
         df = pd.DataFrame(datos, columns=["EVENT"])
         df.drop(df.head(1).index,inplace=True)
