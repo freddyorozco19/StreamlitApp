@@ -690,7 +690,7 @@ if menu_id == "ActionsData":
             with rs03:
                 Competition = st.text_input("Competition:", key="competition")   
             with rs04:
-                Date = st.text_input("Date:", key="date")   
+                Date = st.text_input("Date Game:", key="date")   
             
             VizOption = ['Actions Data', 'Shots Data', 'Dribbles Data', 'Duels Data', 'Aerial Duels Data', 
                          'Defensive Duels Data', 'Offensive Duels Data', 'Recoveries Data', 'Progressive Runs Data', 
@@ -777,7 +777,7 @@ if menu_id == "ActionsData":
         dfT['Match'] = Match
         dfT['DateGame'] = Date
         dfT['Matchday'] = Matchday
-        dfT = dfT[["Player", "Competition", "DateGame", "Match", "Matchday", "" + Option + " ID", "Status", "X1", "Y1"]]
+        dfT = dfT[["Competition", "Matchday", "DateGame", "Match", "Player", "" + Option + " ID", "Status", "X1", "Y1"]]
         st.write(dfT)
         dfwon = dfT[dfT['Status'] == 'won'].reset_index()
         dflost = dfT[dfT['Status'] == 'lost'].reset_index()
