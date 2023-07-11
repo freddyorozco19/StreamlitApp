@@ -760,9 +760,9 @@ if menu_id == "ActionsData":
         df['EVENT'] = df['EVENT'].str[257:]
         dfdiv = df['EVENT'].str.split("marker-end=", expand=True)
         dfdiv.columns = ['Evento', 'Coordenadas']
-        dfdiv['Evento'] = dfdiv['Evento'].str[:-68]
+        dfdiv['Status'] = dfdiv['Status'].str[:-68]
         dfdiv['Coordenadas'] = dfdiv['Coordenadas'].str[25:]
-        dfevent = dfdiv['Evento']
+        dfevent = dfdiv['Status']
         dfcoord = dfdiv['Coordenadas'].str.split("stroke-opacity", expand=True)
         dfcoord.columns = ['Other', 'Coord']
         dfcoord = dfcoord.drop(['Other'],axis=1)
@@ -780,6 +780,7 @@ if menu_id == "ActionsData":
         dfcoord = dfcoord.drop(['Y2'],axis=1)
         dfcoor = pd.concat([dfcoord, dfcoordd], axis=1)
         dfT = pd.concat([dfevent, dfcoor], axis=1)
+        dfT = dfT.replace("d800ff", "Key")
         st.write(dfT)
         but0, but1 = st.columns(2)
         with but0:
