@@ -805,9 +805,9 @@ if menu_id == "ActionsData":
     with r3:
         st.metric("Fallidas", len(dflost))
     with r4:
-        #dfwon = dfwon.astype(int)
-        #dfT = dfT.astype(int)
-        st.write(type(dfT))
+        dfwon4 = len(dfwon)
+        dfT4 = len(dfT)
+        #st.write(type(dfT))
         st.metric("Efectividad (%)", (dfwon*100)/dfT)
 
     #st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
