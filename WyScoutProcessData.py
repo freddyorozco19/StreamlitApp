@@ -790,7 +790,7 @@ if menu_id == "ActionsData":
         dfT['Match'] = Match
         dfT['DateGame'] = Date
         dfT['Matchday'] = Matchday
-        dfT = dfT[["Competition", "Matchday", "DateGame", "Match", "Player", "Status", "X1", "Y1"]]
+        dfT = dfT[["Competition", "Matchday", "DateGame", "Match", "Player", "Status", "X1", "Y1", "X2", "Y2"]]
         st.write(dfT)
         but0, but1 = st.columns(2)
         with but0:
