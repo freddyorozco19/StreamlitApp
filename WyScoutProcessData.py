@@ -833,7 +833,8 @@ if menu_id == "ExtractData":
         dfT['Match'] = Match
         dfT['DateGame'] = Date
         dfT['Matchday'] = Matchday
-        dfT = dfT[["Competition", "Matchday", "DateGame", "Match", "Player", "" + Option + " ID", "Status", "X1", "Y1"]]
+        dfT['Event'] = Option[:5]
+        dfT = dfT[["Competition", "Matchday", "DateGame", "Match", "Player", "Event", "Status", "X1", "Y1"]]
         st.write(dfT)
         
         but0, but1 = st.columns(2)
