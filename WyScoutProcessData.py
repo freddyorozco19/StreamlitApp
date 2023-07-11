@@ -845,7 +845,7 @@ if menu_id == 'PassesData':
                                  key="date"
                                  )   
             
-            Option = st.selectbox('Seleccione Modo Consulta:', ('Actions Data', 'Duels Data', 'Received Passes Data'))
+            #Option = st.selectbox('Seleccione Modo Consulta:', ('Actions Data', 'Duels Data', 'Received Passes Data'))
                 
             submit_button2 = st.form_submit_button(label='Aceptar')
     datos = tablecode.split("<g>")
