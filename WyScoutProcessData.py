@@ -759,7 +759,7 @@ if menu_id == "ActionsData":
         dfc = df
         df['EVENT'] = df['EVENT'].str[257:]
         dfdiv = df['EVENT'].str.split("marker-end=", expand=True)
-        dfdiv.columns = ['Evento', 'Coordenadas']
+        dfdiv.columns = ['Status', 'Coordenadas']
         dfdiv['Status'] = dfdiv['Status'].str[:-68]
         dfdiv['Coordenadas'] = dfdiv['Coordenadas'].str[25:]
         dfevent = dfdiv['Status']
