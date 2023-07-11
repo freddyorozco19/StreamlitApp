@@ -796,13 +796,13 @@ if menu_id == "ActionsData":
                                file_name=""+ name +".csv",
                                mime='text/csv')
         
-        r1, r2, r3 = st.columns(3)
-        with r1:
-            st.metric("Acciones", len(dfT))
-        with r2:
-            st.metric("Exitosas", len(dfwon))
-        with r3:
-            st.metric("Fallidas", len(dflost))
+    r1, r2, r3 = st.columns(3)
+    with r1:
+        st.metric("Acciones", len(dfT))
+    with r2:
+        st.metric("Exitosas", len(dfwon))
+    with r3:
+        st.metric("Fallidas", len(dflost))
 
 
 ###
