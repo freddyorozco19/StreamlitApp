@@ -927,6 +927,9 @@ if menu_id == "PlayerStats":
 
             #SELECT AGE
             agesel = st.slider('Filtro de edad:', 15, 50, (15, 50), 1)   
+            #FILTER BY AGE
+            df = df[df['Age'] <= agesel[1]]
+            df = df[df['Age'] >= agesel[0]]
             #SELECT MINS
             minsel = st.slider('Filtro de minutos (%):', 0, 100)
             #SELECT POSITION OPTION
@@ -944,9 +947,7 @@ if menu_id == "PlayerStats":
             submit_button3 = st.form_submit_button(label='Aceptar')
 
     
-    #FILTER BY AGE
-    df = df[df['Age'] <= agesel[1]]
-    df = df[df['Age'] >= agesel[0]]
+
     #FILTER BY MINUTES
     maxmin = df['Minutes played'].max() + 5
     minsel1 = (minsel*maxmin)/100
