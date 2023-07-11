@@ -781,6 +781,8 @@ if menu_id == "ActionsData":
         dfcoor = pd.concat([dfcoord, dfcoordd], axis=1)
         dfT = pd.concat([dfevent, dfcoor], axis=1)
         dfT = dfT.replace("d800ff", "Key")
+        dfT = dfT.replace("0876ff", "Successful")
+        dfT = dfT.replace("909090", "Unsuccessful")
         st.write(dfT)
         but0, but1 = st.columns(2)
         with but0:
@@ -826,8 +828,6 @@ if menu_id == "ActionsData":
         dfT['Matchday'] = Matchday
         dfT = dfT[["Competition", "Matchday", "DateGame", "Match", "Player", "" + Option + " ID", "Status", "X1", "Y1"]]
         st.write(dfT)
-        dfwon = dfT[dfT['Status'] == 'won'].reset_index()
-        dflost = dfT[dfT['Status'] == 'lost'].reset_index()
         
         but0, but1 = st.columns(2)
         with but0:
@@ -844,6 +844,10 @@ if menu_id == "ActionsData":
                                file_name=""+ name +".csv",
                                mime='text/csv')
     st.markdown("<style> div { text-align: center } </style>", unsafe_allow_html=True)
+    dfT = dfT.replace("won", "Successful")
+    dfT = dfT.replace("lost", "Unsuccessful")
+    dfwon = dfT[dfT['Status'] == 'Successful'].reset_index()
+    dflost = dfT[dfT['Status'] == 'Unsuccessful'].reset_index()
     r1, r2, r3, r4 = st.columns(4)
     with r1:
         st.metric("Acciones", len(dfT))
