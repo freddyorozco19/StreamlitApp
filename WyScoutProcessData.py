@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Sat Apr  1 03:14:41 2023
+Modified on 11/07/2023 version 1.0
 
 @author: Freddy J. Orozco R.
 Powered: Win Stats LATAM
