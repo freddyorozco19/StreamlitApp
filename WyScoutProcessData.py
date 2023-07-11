@@ -806,7 +806,22 @@ if menu_id == "ActionsData":
         st.metric("Fallidas", len(dflost))
 
     #st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
+    css='''
+    [data-testid="metric-container"] {
+        width: fit-content;
+        margin: auto;
+    }
     
+    [data-testid="metric-container"] > div {
+        width: fit-content;
+        margin: auto;
+    }
+    
+    [data-testid="metric-container"] label {
+        width: fit-content;
+        margin: auto;
+    }
+    '''
     st.markdown(f'<style>{css}</style>',unsafe_allow_html=True)
 ###
 if menu_id == 'PassesData':
