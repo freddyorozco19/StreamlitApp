@@ -1447,3 +1447,7 @@ if menu_id == "PlayerStats":
         coldfoth = pd.concat([coldfoth, lowwoth, highhoth, valueoth, meanoth], axis=1)
         coldfoth.columns=['Métrica', 'Min', 'Max', 'Valor', 'Promedio']
         st.table(coldfoth.style.set_precision(2))
+
+    
+    st.markdown("""---""")
+    st.title("CUSTOM RADAR METRICS")
