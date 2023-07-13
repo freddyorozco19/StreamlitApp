@@ -1196,7 +1196,7 @@ if menu_id == "PlayerStats":
     space0, space1, space2 = st.columns((0.6, 0.6, 0.6))
 
     colorradar1 = "#FF0046"
-    colorradar2 = "#00BE61"
+    colorradar2 = "#005CBE"
     alpharradar1 = 0.5
     alpharradar2 = 0.9
     
