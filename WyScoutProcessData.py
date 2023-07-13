@@ -1204,7 +1204,7 @@ if menu_id == "PlayerStats":
         fig, ax = radarofe.setup_axis()  # format axis as a radar
         fig.set_facecolor('#050E1E')
         fig.set_dpi(600)
-        st.markdown('<h1 style="font-size: 20px;">OFFENSIVE</h1>', unsafe_allow_html=True)
+        st.markdown('<h1 style="font-size: 25px;">OFFENSIVE</h1>', unsafe_allow_html=True)
     
         rings_inner = radarofe.draw_circles(ax=ax, facecolor=(1,1,1,0), edgecolor='#222229')  # draw circles
         radar_output = radarofe.draw_radar_compare(valuessofe, valuessofe2, ax=ax,
@@ -1234,7 +1234,7 @@ if menu_id == "PlayerStats":
         fig, ax = radardef.setup_axis()  # format axis as a radar
         fig.set_facecolor('#050E1E')
         fig.set_dpi(600)
-        st.title("DEFENSIVE")
+        st.markdown('<h1 style="font-size: 25px;">DEFENSIVE</h1>', unsafe_allow_html=True)
         rings_inner = radardef.draw_circles(ax=ax, facecolor=(1,1,1,0), edgecolor='#222229')  # draw circles
         radar_output = radardef.draw_radar_compare(valuessdef, valuessdef2, ax=ax,
                                                 kwargs_radar={'facecolor': colorradar1, 'alpha' : alpharradar1},
@@ -1264,7 +1264,7 @@ if menu_id == "PlayerStats":
         fig, ax = radarpos.setup_axis()  # format axis as a radar
         fig.set_facecolor('#050E1E')
         fig.set_dpi(600)
-        st.title("POSSESION")
+        st.markdown('<h1 style="font-size: 25px;">POSSESION</h1>', unsafe_allow_html=True)
         rings_inner = radarpos.draw_circles(ax=ax, facecolor=(1,1,1,0), edgecolor='#222229')  # draw circles
         radar_output = radarpos.draw_radar_compare(valuesspos, valuesspos2, ax=ax,
                                                 kwargs_radar={'facecolor': colorradar1, 'alpha' : alpharradar1},
@@ -1296,7 +1296,7 @@ if menu_id == "PlayerStats":
         fig, ax = radarcre.setup_axis()  # format axis as a radar
         fig.set_facecolor('#050E1E')
         fig.set_dpi(600)
-        st.title("CREATION")
+        st.markdown('<h1 style="font-size: 25px;">CREATION</h1>', unsafe_allow_html=True)
         rings_inner = radarcre.draw_circles(ax=ax, facecolor=(1,1,1,0), edgecolor='#222229')  # draw circles
         radar_output = radarcre.draw_radar_compare(valuesscre, valuesscre2, ax=ax,
                                                 kwargs_radar={'facecolor': colorradar1, 'alpha' : alpharradar1},
@@ -1325,7 +1325,7 @@ if menu_id == "PlayerStats":
         fig, ax = radardis.setup_axis()  # format axis as a radar
         fig.set_facecolor('#050E1E')
         fig.set_dpi(600)
-        st.title("DISTRIBUTION")
+        st.markdown('<h1 style="font-size: 25px;">DISTRIBUTION</h1>', unsafe_allow_html=True)
         rings_inner = radardis.draw_circles(ax=ax, facecolor=(1,1,1,0), edgecolor='#222229')  # draw circles
         radar_output = radardis.draw_radar_compare(valuessdis, valuessdis2, ax=ax,
                                                 kwargs_radar={'facecolor': colorradar1, 'alpha' : alpharradar1},
@@ -1355,7 +1355,7 @@ if menu_id == "PlayerStats":
         fig, ax = radaroth.setup_axis()  # format axis as a radar
         fig.set_facecolor('#050E1E')
         fig.set_dpi(600)
-        st.title("GENERAL")
+        st.markdown('<h1 style="font-size: 25px;">GENERAL</h1>', unsafe_allow_html=True)
         rings_inner = radaroth.draw_circles(ax=ax, facecolor=(1,1,1,0), edgecolor='#222229')  # draw circles
         radar_output = radaroth.draw_radar_compare(valuessoth, valuessoth2, ax=ax,
                                                 kwargs_radar={'facecolor': colorradar1, 'alpha' : alpharradar1},
