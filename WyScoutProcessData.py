@@ -1381,12 +1381,13 @@ if menu_id == "PlayerStats":
         st.pyplot(fig, bbox_inches="tight", pad_inches=0.05, dpi=600, format="png") 
 
     #####
-    fig, ax = plt.subplots(figsize = (12,2), dpi=600)
+    fig, ax = plt.subplots(figsize = (12,1), dpi=600)
     fig.set_facecolor('#121214')
     ax.patch.set_facecolor('#121214')
     ax.set_xlim(0,100)
     ax.set_ylim(0,10)
-    ax.scatter(50, 5, s=300, color=colorradar1)
+    ax.scatter(30, 5, s=600, color=colorradar1, marker='s')
+    ax.scatter(70, 5, s=600, color=colorradar2, marker='s')
     st.pyplot(fig, bbox_inches="tight", pad_inches=0.05, dpi=600, format="png")
     st.markdown("""---""")        
     st.table(dfaux.style.set_precision(2)) 
