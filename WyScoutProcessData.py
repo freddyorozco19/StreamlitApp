@@ -1387,6 +1387,7 @@ if menu_id == "PlayerStats":
     ax.set_xlim(0,100)
     ax.set_ylim(0,10)
     ax.scatter(50, 5, s=300, color=colorradar1)
+    st.pyplot(fig, bbox_inches="tight", pad_inches=0.05, dpi=600, format="png")
     st.markdown("""---""")        
     st.table(dfaux.style.set_precision(2)) 
     
