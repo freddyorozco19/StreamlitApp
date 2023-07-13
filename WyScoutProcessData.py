@@ -1374,7 +1374,7 @@ if menu_id == "PlayerStats":
     
         st.pyplot(fig, bbox_inches="tight", pad_inches=0.05, dpi=600, format="png") 
         
-        
+    st.markdown("""---""")        
     st.table(dfaux.style.set_precision(2)) 
     
        
