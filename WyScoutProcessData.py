@@ -1204,7 +1204,7 @@ if menu_id == "PlayerStats":
         rings_inner = radarofe.draw_circles(ax=ax, facecolor=(1,1,1,0), edgecolor='#222229')  # draw circles
         radar_output = radarofe.draw_radar_compare(valuessofe, valuessofe2, ax=ax,
                                                 kwargs_radar={'facecolor': '#FF0046', 'alpha' : 0.5},
-                                                kwargs_compare={'facecolor': 'colorradar2', 'alpha' : 0.5},
+                                                kwargs_compare={'facecolor': colorradar2, 'alpha' : 0.5},
                                                 )  # draw the radar
         radar_poly, radar_poly2, vertices, vertices2 = radar_output
         # range_labels = radar.draw_range_labels(ax=ax, fontsize=18,
