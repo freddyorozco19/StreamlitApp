@@ -1380,27 +1380,24 @@ if menu_id == "PlayerStats":
     
         st.pyplot(fig, bbox_inches="tight", pad_inches=0.05, dpi=600, format="png") 
 
-    # Aplicar estilo CSS personalizado para centrar el cuadrado azul
+   # Aplicar estilo CSS personalizado para centrar y ajustar el cuadrado azul
     css = """
     <style>
-    .container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 40vh;
-    }
-    
     .square {
-        width: 20px;
-        height: 20px;
+        width: 200px;
+        height: 200px;
         background-color: blue;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
     </style>
     """
     
-    # Mostrar el cuadrado azul centrado utilizando CSS personalizado
+    # Mostrar el cuadrado azul centrado y ajustado utilizando CSS personalizado
     st.markdown(css, unsafe_allow_html=True)
-    st.markdown('<div class="container"><div class="square"></div></div>', unsafe_allow_html=True)
+    st.markdown('<div class="square"></div>', unsafe_allow_html=True)
     st.markdown("""---""")        
     st.table(dfaux.style.set_precision(2)) 
     
