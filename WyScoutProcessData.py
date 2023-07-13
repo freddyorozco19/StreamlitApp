@@ -1387,12 +1387,12 @@ if menu_id == "PlayerStats":
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
+        height: 40vh;
     }
     
     .square {
-        width: 200px;
-        height: 200px;
+        width: 20px;
+        height: 20px;
         background-color: blue;
     }
     </style>
