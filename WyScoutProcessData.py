@@ -975,6 +975,8 @@ if menu_id == "PlayerStats":
     st.markdown("""---""")
     st.title("PLAYER STATS")
     st.write(df)
+    st.markdown("""---""")
+    st.title("RADAR METRICS GROUP")
     # Data Cleaning - Exploratory Data Analysis 
 
     #Filtrar métricas normalizadas por 90 minutos
