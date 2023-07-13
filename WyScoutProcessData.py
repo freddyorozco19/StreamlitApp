@@ -1266,7 +1266,7 @@ if menu_id == "PlayerStats":
         # range_labels = radar.draw_range_labels(ax=ax, fontsize=18,
         #                                        fontproperties=prop)  # draw the range labels
         param_labels = radarpos.draw_param_labels(ax=ax, fontsize=15, color=(1,1,1,0.8),
-                                               fontproperties=prop)  # draw the param labels
+                                               fontproperties=prop2)  # draw the param labels
     
         vert = vertices.tolist()
         dfver = pd.DataFrame(vert, columns=['X', 'Y'])
@@ -1298,7 +1298,7 @@ if menu_id == "PlayerStats":
         # range_labels = radar.draw_range_labels(ax=ax, fontsize=18,
         #                                        fontproperties=prop)  # draw the range labels
         param_labels = radarcre.draw_param_labels(ax=ax, fontsize=15, color=(1,1,1,0.8),
-                                               fontproperties=prop)  # draw the param labels
+                                               fontproperties=prop2)  # draw the param labels
     
         vert = vertices.tolist()
         dfver = pd.DataFrame(vert, columns=['X', 'Y'])
@@ -1327,7 +1327,7 @@ if menu_id == "PlayerStats":
         # range_labels = radar.draw_range_labels(ax=ax, fontsize=18,
         #                                        fontproperties=prop)  # draw the range labels
         param_labels = radardis.draw_param_labels(ax=ax, fontsize=15, color=(1,1,1,0.8),
-                                               fontproperties=prop)  # draw the param labels
+                                               fontproperties=prop2)  # draw the param labels
     
         vert = vertices.tolist()
         dfver = pd.DataFrame(vert, columns=['X', 'Y'])
@@ -1357,7 +1357,7 @@ if menu_id == "PlayerStats":
         # range_labels = radar.draw_range_labels(ax=ax, fontsize=18,
         #                                        fontproperties=prop)  # draw the range labels
         param_labels = radaroth.draw_param_labels(ax=ax, fontsize=15, color=(1,1,1,0.8),
-                                               fontproperties=prop)  # draw the param labels
+                                               fontproperties=prop2)  # draw the param labels
     
         vert = vertices.tolist()
         dfver = pd.DataFrame(vert, columns=['X', 'Y'])
