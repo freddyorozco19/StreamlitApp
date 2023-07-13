@@ -923,7 +923,8 @@ if menu_id == "PlayerStats":
         Dataframe = st.file_uploader("Cargar archivo:", type="xlsx")
         if Dataframe is not None:
             df = pd.read_excel(Dataframe)
-            
+
+        df['Pos1'] = df['Pos1'].fillna("OTH")
         with st.form(key='form3'):
 
             #SELECT AGE
@@ -940,7 +941,7 @@ if menu_id == "PlayerStats":
             #SELECT POSITION OPTION
             positions = list(df['Pos1'].drop_duplicates())
             positions.append("ALL")
-            #positions.sort()
+            positions.sort()
             seldf0 = st.selectbox("Filtrar por posición:", positions)
             #FILTER BY POSITIONS
             dftres = df
