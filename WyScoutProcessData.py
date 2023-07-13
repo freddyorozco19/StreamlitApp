@@ -1385,6 +1385,7 @@ if menu_id == "PlayerStats":
     #fig.set_visible(False)
     #ax.patch.set_visible('False')
     ax.axis('off')
+    fig.patch.set_visible(False)
     ax.set_xlim(0,100)
     ax.set_ylim(0,10)
     ax.scatter(30, 5, s=600, color=colorradar1, marker='s')
