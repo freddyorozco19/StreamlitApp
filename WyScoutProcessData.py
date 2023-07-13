@@ -1194,6 +1194,7 @@ if menu_id == "PlayerStats":
     
     space0, space1, space2 = st.columns((0.6, 0.6, 0.6))
 
+    colorradar1 = "#FF0046"
     colorradar2 = "#505050"
     
     with space0:
@@ -1204,7 +1205,7 @@ if menu_id == "PlayerStats":
         rings_inner = radarofe.draw_circles(ax=ax, facecolor=(1,1,1,0), edgecolor='#222229')  # draw circles
         radar_output = radarofe.draw_radar_compare(valuessofe, valuessofe2, ax=ax,
                                                 kwargs_radar={'facecolor': '#FF0046', 'alpha' : 0.5},
-                                                kwargs_compare={'facecolor': colorradar2, 'alpha' : 0.5},
+                                                kwargs_compare={'facecolor': colorradar2, 'alpha' : 0.7},
                                                 )  # draw the radar
         radar_poly, radar_poly2, vertices, vertices2 = radar_output
         # range_labels = radar.draw_range_labels(ax=ax, fontsize=18,
@@ -1218,7 +1219,7 @@ if menu_id == "PlayerStats":
         dos = dfver['Y'].tolist()
     
         ax.scatter(vertices[:, 0], vertices[:, 1], c='#FF0046', edgecolors='#050E1E', s=120, alpha=0.5)
-        ax.scatter(vertices2[:, 0], vertices2[:, 1], c=colorradar2, edgecolors='#050E1E', s=120, alpha=0.5)
+        ax.scatter(vertices2[:, 0], vertices2[:, 1], c=colorradar2, edgecolors='#050E1E', s=120, alpha=0.7)
     
         #st.write(lowwofe)
         #st.write(highhofe)
@@ -1233,7 +1234,7 @@ if menu_id == "PlayerStats":
         rings_inner = radardef.draw_circles(ax=ax, facecolor=(1,1,1,0), edgecolor='#222229')  # draw circles
         radar_output = radardef.draw_radar_compare(valuessdef, valuessdef2, ax=ax,
                                                 kwargs_radar={'facecolor': '#FF0046', 'alpha' : 0.5},
-                                                kwargs_compare={'facecolor': '#888A8D', 'alpha' : 0.5},
+                                                kwargs_compare={'facecolor': colorradar2, 'alpha' : 0.7},
                                                 )  # draw the radar
         radar_poly, radar_poly2, vertices, vertices2 = radar_output
         # range_labels = radar.draw_range_labels(ax=ax, fontsize=18,
@@ -1247,7 +1248,7 @@ if menu_id == "PlayerStats":
         dos = dfver['Y'].tolist()
     
         ax.scatter(vertices[:, 0], vertices[:, 1], c='#FF0046', edgecolors='#050E1E', s=120, alpha=0.5)
-        ax.scatter(vertices2[:, 0], vertices2[:, 1], c='#888A8D', edgecolors='#050E1E', s=120, alpha=0.5)
+        ax.scatter(vertices2[:, 0], vertices2[:, 1], c=colorradar2, edgecolors='#050E1E', s=120, alpha=0.7)
     
         #st.write(lowwdef)
         #st.write(highhdef)
@@ -1263,7 +1264,7 @@ if menu_id == "PlayerStats":
         rings_inner = radarpos.draw_circles(ax=ax, facecolor=(1,1,1,0), edgecolor='#222229')  # draw circles
         radar_output = radarpos.draw_radar_compare(valuesspos, valuesspos2, ax=ax,
                                                 kwargs_radar={'facecolor': '#FF0046', 'alpha' : 0.5},
-                                                kwargs_compare={'facecolor': '#888A8D', 'alpha' : 0.5},
+                                                kwargs_compare={'facecolor': colorradar2, 'alpha' : 0.7},
                                                 )  # draw the radar
         radar_poly, radar_poly2, vertices, vertices2 = radar_output
         # range_labels = radar.draw_range_labels(ax=ax, fontsize=18,
@@ -1277,7 +1278,7 @@ if menu_id == "PlayerStats":
         dos = dfver['Y'].tolist()
     
         ax.scatter(vertices[:, 0], vertices[:, 1], c='#FF0046', edgecolors='#050E1E', s=120, alpha=0.5)
-        ax.scatter(vertices2[:, 0], vertices2[:, 1], c='#888A8D', edgecolors='#050E1E', s=120, alpha=0.5)
+        ax.scatter(vertices2[:, 0], vertices2[:, 1], c=colorradar2, edgecolors='#050E1E', s=120, alpha=0.7)
     
     
         st.pyplot(fig, bbox_inches="tight", pad_inches=0.05, dpi=600, format="png") 
@@ -1295,7 +1296,7 @@ if menu_id == "PlayerStats":
         rings_inner = radarcre.draw_circles(ax=ax, facecolor=(1,1,1,0), edgecolor='#222229')  # draw circles
         radar_output = radarcre.draw_radar_compare(valuesscre, valuesscre2, ax=ax,
                                                 kwargs_radar={'facecolor': '#FF0046', 'alpha' : 0.5},
-                                                kwargs_compare={'facecolor': '#888A8D', 'alpha' : 0.5},
+                                                kwargs_compare={'facecolor': colorradar2, 'alpha' : 0.7},
                                                 )  # draw the radar
         radar_poly, radar_poly2, vertices, vertices2 = radar_output
         # range_labels = radar.draw_range_labels(ax=ax, fontsize=18,
@@ -1309,7 +1310,7 @@ if menu_id == "PlayerStats":
         dos = dfver['Y'].tolist()
     
         ax.scatter(vertices[:, 0], vertices[:, 1], c='#FF0046', edgecolors='#050E1E', s=120, alpha=0.5)
-        ax.scatter(vertices2[:, 0], vertices2[:, 1], c='#888A8D', edgecolors='#050E1E', s=120, alpha=0.5)
+        ax.scatter(vertices2[:, 0], vertices2[:, 1], c=colorradar2, edgecolors='#050E1E', s=120, alpha=0.7)
     
         #st.write(lowwcre)
         #st.write(highhcre)
@@ -1324,7 +1325,7 @@ if menu_id == "PlayerStats":
         rings_inner = radardis.draw_circles(ax=ax, facecolor=(1,1,1,0), edgecolor='#222229')  # draw circles
         radar_output = radardis.draw_radar_compare(valuessdis, valuessdis2, ax=ax,
                                                 kwargs_radar={'facecolor': '#FF0046', 'alpha' : 0.5},
-                                                kwargs_compare={'facecolor': '#888A8D', 'alpha' : 0.5},
+                                                kwargs_compare={'facecolor': colorradar2, 'alpha' : 0.7},
                                                 )  # draw the radar
         radar_poly, radar_poly2, vertices, vertices2 = radar_output
         # range_labels = radar.draw_range_labels(ax=ax, fontsize=18,
@@ -1338,7 +1339,7 @@ if menu_id == "PlayerStats":
         dos = dfver['Y'].tolist()
     
         ax.scatter(vertices[:, 0], vertices[:, 1], c='#FF0046', edgecolors='#050E1E', s=120, alpha=0.5)
-        ax.scatter(vertices2[:, 0], vertices2[:, 1], c='#888A8D', edgecolors='#050E1E', s=120, alpha=0.5)
+        ax.scatter(vertices2[:, 0], vertices2[:, 1], c=colorradar2, edgecolors='#050E1E', s=120, alpha=0.7)
     
         #st.write(lowwdis)
         #st.write(highhdis)
@@ -1354,7 +1355,7 @@ if menu_id == "PlayerStats":
         rings_inner = radaroth.draw_circles(ax=ax, facecolor=(1,1,1,0), edgecolor='#222229')  # draw circles
         radar_output = radaroth.draw_radar_compare(valuessoth, valuessoth2, ax=ax,
                                                 kwargs_radar={'facecolor': '#FF0046', 'alpha' : 0.5},
-                                                kwargs_compare={'facecolor': '#888A8D', 'alpha' : 0.5},
+                                                kwargs_compare={'facecolor': colorradar2, 'alpha' : 0.7},
                                                 )  # draw the radar
         radar_poly, radar_poly2, vertices, vertices2 = radar_output
         # range_labels = radar.draw_range_labels(ax=ax, fontsize=18,
@@ -1368,7 +1369,7 @@ if menu_id == "PlayerStats":
         dos = dfver['Y'].tolist()
     
         ax.scatter(vertices[:, 0], vertices[:, 1], c='#FF0046', edgecolors='#050E1E', s=120, alpha=0.5)
-        ax.scatter(vertices2[:, 0], vertices2[:, 1], c='#888A8D', edgecolors='#050E1E', s=120, alpha=0.5)
+        ax.scatter(vertices2[:, 0], vertices2[:, 1], c=colorradar2, edgecolors='#050E1E', s=120, alpha=0.7)
     
         #st.write(lowwoth)
         #st.write(highhoth)
