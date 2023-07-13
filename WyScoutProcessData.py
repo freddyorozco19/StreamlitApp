@@ -1382,7 +1382,7 @@ if menu_id == "PlayerStats":
 
     #####
     fig, ax = plt.subplots(figsize = (12,1), dpi=600)
-    fig.set_visible(False)
+    #fig.set_visible(False)
     #ax.patch.set_visible('False')
     ax.axis('off')
     ax.set_xlim(0,100)
