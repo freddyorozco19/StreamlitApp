@@ -961,6 +961,9 @@ if menu_id == "PlayerStats":
             playersel = st.selectbox('Selecciona un jugador:', players)
             #FILTER BY PLAYER
             df = df[df['Player'] == playersel]
+
+            #GET AUX INFO
+            dfaux = df[['Player', 'Team', 'Pos1', 'Age', '90s']]
                             
             submit_button3 = st.form_submit_button(label='Aceptar')
 
