@@ -1197,8 +1197,8 @@ if menu_id == "PlayerStats":
 
     colorradar1 = "#FF0046"
     colorradar2 = "#005CBE"
-    alpharradar1 = 0.5
-    alpharradar2 = 0.9
+    alpharradar1 = 0.7
+    alpharradar2 = 0.7
     
     with space0:
         fig, ax = radarofe.setup_axis()  # format axis as a radar
