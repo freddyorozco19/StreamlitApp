@@ -1379,7 +1379,21 @@ if menu_id == "PlayerStats":
         #st.write(highhoth)
     
         st.pyplot(fig, bbox_inches="tight", pad_inches=0.05, dpi=600, format="png") 
-        
+
+    # Aplicar estilo CSS personalizado para el cuadrado azul
+    css = """
+    <style>
+    .square {
+        width: 200px;
+        height: 200px;
+        background-color: blue;
+    }
+    </style>
+    """
+    
+    # Mostrar el cuadrado azul utilizando CSS personalizado
+    st.markdown(css, unsafe_allow_html=True)
+    st.markdown('<div class="square"></div>', unsafe_allow_html=True)
     st.markdown("""---""")        
     st.table(dfaux.style.set_precision(2)) 
     
