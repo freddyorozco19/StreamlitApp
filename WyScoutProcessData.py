@@ -1204,6 +1204,7 @@ if menu_id == "PlayerStats":
         fig, ax = radarofe.setup_axis()  # format axis as a radar
         fig.set_facecolor('#050E1E')
         fig.set_dpi(600)
+        st.markdown('<h1 style="font-size: 10px;">HOLA</h1>', unsafe_allow_html=True)
         st.title("OFFENSIVE")
     
         rings_inner = radarofe.draw_circles(ax=ax, facecolor=(1,1,1,0), edgecolor='#222229')  # draw circles
