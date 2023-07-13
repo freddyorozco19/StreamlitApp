@@ -1382,8 +1382,9 @@ if menu_id == "PlayerStats":
 
     #####
     fig, ax = plt.subplots(figsize = (12,1), dpi=600)
-    #fig.set_facecolor('#121214')
-    ax.patch.set_visible('False')
+    fig.set_visible(False)
+    #ax.patch.set_visible('False')
+    ax.axis('off')
     ax.set_xlim(0,100)
     ax.set_ylim(0,10)
     ax.scatter(30, 5, s=600, color=colorradar1, marker='s')
