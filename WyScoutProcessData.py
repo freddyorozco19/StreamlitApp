@@ -1197,8 +1197,8 @@ if menu_id == "PlayerStats":
 
     colorradar1 = "#FF0046"
     colorradar2 = "#005CBE"
-    alpharradar1 = 0.7
-    alpharradar2 = 0.7
+    alpharradar1 = 0.5
+    alpharradar2 = 0.5
     
     with space0:
         fig, ax = radarofe.setup_axis()  # format axis as a radar
@@ -1222,8 +1222,8 @@ if menu_id == "PlayerStats":
         uno = dfver['X'].tolist()
         dos = dfver['Y'].tolist()
     
-        ax.scatter(vertices[:, 0], vertices[:, 1], c=colorradar1, edgecolors='#050E1E', s=120, alpha=alpharradar1)
-        ax.scatter(vertices2[:, 0], vertices2[:, 1], c=colorradar2, edgecolors='#050E1E', s=120, alpha=alpharradar2)
+        ax.scatter(vertices[:, 0], vertices[:, 1], c=colorradar1, edgecolors='#050E1E', s=120, alpha=alpharradar1, zorder=-1)
+        ax.scatter(vertices2[:, 0], vertices2[:, 1], c=colorradar2, edgecolors='#050E1E', s=120, alpha=alpharradar2, zorder=-1)
     
         #st.write(lowwofe)
         #st.write(highhofe)
