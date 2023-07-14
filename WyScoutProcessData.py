@@ -1468,3 +1468,14 @@ if menu_id == "PlayerStats":
     
     st.markdown("""---""")
     st.title("CUSTOM RADAR METRICS")
+    df = pd.DataFrame(
+    np.random.randn(200,3),
+    columns=['a', 'b', 'c']
+    )
+    
+    c = alt.Chart(df, width=600).mark_circle().encode(
+        x='a', y='b', size='c', color='c', 
+        tooltip=['a', 'b', 'c'] # <--- tooltip part
+    )
+    
+    st.altair_chart(c)
