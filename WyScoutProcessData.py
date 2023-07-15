@@ -665,19 +665,19 @@ if menu_id == "AllMetrics":
             players = list(df['Player'].drop_duplicates())            
             playersel1 = st.selectbox('Selecciona un jugador 1:', players)
             #FILTER BY PLAYER
-            df = df[df['Player'] == playersel1]
+            dfP1 = df[df['Player'] == playersel1]
         with fk23:
             #SELECT PLAYER 2
             #players = list(df['Player'].drop_duplicates())            
             playersel2 = st.selectbox('Selecciona un jugador 2:', players)
             #FILTER BY PLAYER
-            df = df[df['Player'] == playersel2]
+            dfP2 = df[df['Player'] == playersel2]
         with fk24:
             #SELECT PLAYER 3
             #players = list(df['Player'].drop_duplicates())            
             playersel3 = st.selectbox('Selecciona un jugador 3:', players)
             #FILTER BY PLAYER
-            df = df[df['Player'] == playersel3]
+            dfP3 = df[df['Player'] == playersel3]
             
         submit_buttonFK = st.form_submit_button(label='Aceptar')
     fig, ax = plt.subplots(figsize = (12,12), dpi=600)
@@ -685,10 +685,21 @@ if menu_id == "AllMetrics":
     ax.patch.set_facecolor('#121214')
     xsel = dfplot[metselFK]
     ysel = dfplot[metselFK2]
+
+    xsel1 = dfP1[metselFK]
+    ysel1 = dfP1[metselFK2]
+    xsel2 = dfP2[metselFK]
+    ysel2 = dfP2[metselFK2]
+    xsel3 = dfP3[metselFK]
+    ysel3 = dfP3[metselFK2]
     #st.write(x)
     #st.write(y)
     #st.write(df['Goals']
     ax.scatter(xsel, ysel, color="#FF0046", alpha=0.7)
+
+    ax.scatter(xsel1, ysel1, s=400, color="#FF0046", alpha=0.7)
+    ax.scatter(xsel2, ysel2, s=400, color="#FF0046", alpha=0.7)
+    ax.scatter(xsel3, ysel3, s=400, color="#FF0046", alpha=0.7)
     spines = ['top','bottom','left','right']
     for x in spines:
         if x in spines:
@@ -701,8 +712,8 @@ if menu_id == "AllMetrics":
     maxX = maxXaux + (0.1*maxXaux)
     maxYaux = max(ysel)
     maxY = maxYaux + (0.1*maxYaux)
-    ax.set_xlim(0, maxX)
-    ax.set_ylim(0, maxY)
+    ax.set_xlim(-0.1, maxX)
+    ax.set_ylim(-0.1, maxY)
     #st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
     st.pyplot(fig, bbox_inches="tight", dpi=600, format="png")
     
