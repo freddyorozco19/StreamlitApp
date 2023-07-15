@@ -711,9 +711,9 @@ if menu_id == "AllMetrics":
     ax.scatter(xsel3, ysel3, s=zsel3, color="#FFF", edgecolors='#121214', alpha=0.7)
 
     #for i, txt in enumerate(zzz3):
-    ax.annotate(ksel1, (xsel1, ysel1+0.5), c='w', fontproperties=prop2, fontsize=10, zorder=4, ha='center', va='center')
-    ax.annotate(ksel2, (xsel2, ysel2+0.5), c='w', fontproperties=prop2, fontsize=10, zorder=4, ha='center', va='center')
-    ax.annotate(ksel3, (xsel3, ysel3+0.5), c='w', fontproperties=prop2, fontsize=10, zorder=4, ha='center', va='center')
+    ax.annotate(ksel1, (xsel1, ysel1+0.05), c='w', fontproperties=prop2, fontsize=10, zorder=4, ha='center', va='center')
+    ax.annotate(ksel2, (xsel2, ysel2+0.05), c='w', fontproperties=prop2, fontsize=10, zorder=4, ha='center', va='center')
+    ax.annotate(ksel3, (xsel3, ysel3+0.05), c='w', fontproperties=prop2, fontsize=10, zorder=4, ha='center', va='center')
         
     spines = ['top','bottom','left','right']
     for x in spines:
