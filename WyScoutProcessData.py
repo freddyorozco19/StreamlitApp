@@ -721,8 +721,8 @@ if menu_id == "AllMetrics":
     ax.set_xlim(-0.1, maxX)
     ax.set_ylim(-0.1, maxY)
 
-    ax.vlines(xmean, -0.1, maxX, color='w', linestyle='--', alpha=0.8, zorder=3)
-    ax.hlines(ymean, -0.1, maxY, color='w', linestyle='--', alpha=0.8, zorder=3)
+    ax.vlines(xmean, -0.1, maxY, color='w', linestyle='--', alpha=0.8, zorder=3)
+    ax.hlines(ymean, -0.1, maxX, color='w', linestyle='--', alpha=0.8, zorder=3)
     #st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
     st.pyplot(fig, bbox_inches="tight", dpi=600, format="png")
     
