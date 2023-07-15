@@ -644,7 +644,40 @@ if menu_id == "AllMetrics":
             df = df[df['Age'] >= agesel[0]]
         with fk13:
             #FILTER BY UMBRAL
-            umbralsel = st.slider("Seleccionar umbral:", 1, 100, 1) 
+            umbralsel = st.slider("Seleccionar umbral:", 1, 100, 1)
+
+        fk21, fk22, fk23, fk24 = st.columns(4)
+        with fk21:
+            #FILTER BY TEAMS
+            df = dfORIGINAL
+            teams = list(df['Team'].drop_duplicates())
+            auxtm = "ALL"
+            teams.append(auxtm)
+            teamsele = st.selectbox('Seleccionar equipo:', teams)
+            dft = df
+            if teamsele == "ALL":
+                df = dft
+            else:
+                df = df[df['Team'] == teamsele]
+        with fk22:
+            #SELECT PLAYER 1
+            players = list(df['Player'].drop_duplicates())            
+            playersel1 = st.selectbox('Selecciona un jugador:', players)
+            #FILTER BY PLAYER
+            df = df[df['Player'] == playersel1]
+        with fk23:
+            #SELECT PLAYER 2
+            #players = list(df['Player'].drop_duplicates())            
+            playersel2 = st.selectbox('Selecciona un jugador:', players)
+            #FILTER BY PLAYER
+            df = df[df['Player'] == playersel2]
+        with fk24:
+            #SELECT PLAYER 3
+            #players = list(df['Player'].drop_duplicates())            
+            playersel3 = st.selectbox('Selecciona un jugador:', players)
+            #FILTER BY PLAYER
+            df = df[df['Player'] == playersel3]
+            
         submit_buttonFK = st.form_submit_button(label='Aceptar')
     fig, ax = plt.subplots(figsize = (12,12), dpi=600)
     fig.set_facecolor('#121214')
