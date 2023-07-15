@@ -697,9 +697,9 @@ if menu_id == "AllMetrics":
     #st.write(df['Goals']
     ax.scatter(xsel, ysel, color="#FF0046", alpha=0.7)
 
-    ax.scatter(xsel1, ysel1, s=400, color="#FF0046", alpha=0.7)
-    ax.scatter(xsel2, ysel2, s=400, color="#FF0046", alpha=0.7)
-    ax.scatter(xsel3, ysel3, s=400, color="#FF0046", alpha=0.7)
+    ax.scatter(xsel1, ysel1, s=400, color="#FFF", alpha=0.7)
+    ax.scatter(xsel2, ysel2, s=400, color="#FFF", alpha=0.7)
+    ax.scatter(xsel3, ysel3, s=400, color="#FFF", alpha=0.7)
     spines = ['top','bottom','left','right']
     for x in spines:
         if x in spines:
