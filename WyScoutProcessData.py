@@ -645,6 +645,7 @@ if menu_id == "AllMetrics":
         with fk13:
             #FILTER BY UMBRAL
             umbralsel = st.slider("Seleccionar umbral:", 1, 100, 1)
+            dfplot = df
 
         fk21, fk22, fk23, fk24 = st.columns(4)
         with fk21:
@@ -682,8 +683,8 @@ if menu_id == "AllMetrics":
     fig, ax = plt.subplots(figsize = (12,12), dpi=600)
     fig.set_facecolor('#121214')
     ax.patch.set_facecolor('#121214')
-    xsel = df[metselFK]
-    ysel = df[metselFK2]
+    xsel = dfplot[metselFK]
+    ysel = dfplot[metselFK2]
     #st.write(x)
     #st.write(y)
     #st.write(df['Goals']
