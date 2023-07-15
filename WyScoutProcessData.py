@@ -662,19 +662,19 @@ if menu_id == "AllMetrics":
         with fk22:
             #SELECT PLAYER 1
             players = list(df['Player'].drop_duplicates())            
-            playersel1 = st.selectbox('Selecciona un jugador:', players)
+            playersel1 = st.selectbox('Selecciona un jugador 1:', players)
             #FILTER BY PLAYER
             df = df[df['Player'] == playersel1]
         with fk23:
             #SELECT PLAYER 2
             #players = list(df['Player'].drop_duplicates())            
-            playersel2 = st.selectbox('Selecciona un jugador:', players)
+            playersel2 = st.selectbox('Selecciona un jugador 2:', players)
             #FILTER BY PLAYER
             df = df[df['Player'] == playersel2]
         with fk24:
             #SELECT PLAYER 3
             #players = list(df['Player'].drop_duplicates())            
-            playersel3 = st.selectbox('Selecciona un jugador:', players)
+            playersel3 = st.selectbox('Selecciona un jugador 3:', players)
             #FILTER BY PLAYER
             df = df[df['Player'] == playersel3]
             
