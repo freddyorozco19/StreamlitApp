@@ -628,6 +628,23 @@ if menu_id == "AllMetrics":
             #    df = dfc
             #else:
             df = df[df['Pos1'].isin(posselFK)]
+
+        fk11, fk12, fk13 = st.columns(3)
+        with fk11:
+            #FILTER BY MINUTES
+            maxmin = df['Minutes played'].max() + 5
+            minsel = st.slider('Filtro de minutos (%):', 0, 100)
+            minsel1 = (minsel*maxmin)/100
+            df = df[df['Minutes played'] >= minsel1].reset_index()
+            dfc = df
+        with fk12:
+            #FILTER BY AGE
+            agesel = st.slider('Filtro de edad:', 15, 45, (15, 45), 1)   
+            df = df[df['Age'] <= agesel[1]]
+            df = df[df['Age'] >= agesel[0]]
+        with fk13:
+            #FILTER BY UMBRAL
+            umbralsel = st.slider("Seleccionar umbral:", 1, 100, 1) 
         submit_buttonFK = st.form_submit_button(label='Aceptar')
     fig, ax = plt.subplots(figsize = (12,12), dpi=600)
     fig.set_facecolor('#121214')
