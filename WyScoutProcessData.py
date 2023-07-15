@@ -686,6 +686,8 @@ if menu_id == "AllMetrics":
     xsel = dfplot[metselFK]
     ysel = dfplot[metselFK2]
     zsel = dfplot['Minutes played']
+    xmean = xsel.mean()
+    ymean = ysel.mean()
 
     xsel1 = dfP1[metselFK]
     ysel1 = dfP1[metselFK2]
@@ -713,11 +715,14 @@ if menu_id == "AllMetrics":
     plt.xlabel(metselFK, color = 'w', fontproperties=prop2, fontsize=15, labelpad=20)
     plt.ylabel(metselFK2, color = 'w', fontproperties=prop2, fontsize=15, labelpad=20)
     maxXaux = max(xsel)
-    maxX = maxXaux + (0.1*maxXaux)
+    maxX = maxXaux + (0.05*maxXaux)
     maxYaux = max(ysel)
-    maxY = maxYaux + (0.1*maxYaux)
+    maxY = maxYaux + (0.05*maxYaux)
     ax.set_xlim(-0.1, maxX)
     ax.set_ylim(-0.1, maxY)
+
+    ax.vlines(xmean, -0.1, maxX, color='w', linestyle='--', alpha=0.8, zorder=3)
+    ax.hlines(ymean, -0.1, maxY, color='w', linestyle='--', alpha=0.8, zorder=3)
     #st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
     st.pyplot(fig, bbox_inches="tight", dpi=600, format="png")
     
