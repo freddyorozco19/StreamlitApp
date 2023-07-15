@@ -685,21 +685,25 @@ if menu_id == "AllMetrics":
     ax.patch.set_facecolor('#121214')
     xsel = dfplot[metselFK]
     ysel = dfplot[metselFK2]
+    zsel = dfplot['Minutes played']
 
     xsel1 = dfP1[metselFK]
     ysel1 = dfP1[metselFK2]
+    zsel1 = dfP1['Minutes played']
     xsel2 = dfP2[metselFK]
     ysel2 = dfP2[metselFK2]
+    zsel2 = dfP2['Minutes played']
     xsel3 = dfP3[metselFK]
     ysel3 = dfP3[metselFK2]
+    zsel3 = dfP3['Minutes played']
     #st.write(x)
     #st.write(y)
     #st.write(df['Goals']
-    ax.scatter(xsel, ysel, color="#FF0046", alpha=0.7)
+    ax.scatter(xsel, ysel, s=szel, color="#FF0046", alpha=0.7)
 
-    ax.scatter(xsel1, ysel1, s=400, color="#FFF", alpha=0.7)
-    ax.scatter(xsel2, ysel2, s=400, color="#FFF", alpha=0.7)
-    ax.scatter(xsel3, ysel3, s=400, color="#FFF", alpha=0.7)
+    ax.scatter(xsel1, ysel1, s=szel1, color="#FFF", alpha=0.7)
+    ax.scatter(xsel2, ysel2, s=szel2, color="#FFF", alpha=0.7)
+    ax.scatter(xsel3, ysel3, s=szel3,, color="#FFF", alpha=0.7)
     spines = ['top','bottom','left','right']
     for x in spines:
         if x in spines:
