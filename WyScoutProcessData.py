@@ -727,8 +727,8 @@ if menu_id == "AllMetrics":
     maxX = maxXaux + (0.05*maxXaux)
     maxYaux = max(ysel)
     maxY = maxYaux + (0.05*maxYaux)
-    ax.set_xlim(0-(0.05*maxYaux), maxX)
-    ax.set_ylim(0-(0.05*maxYaux), maxY)
+    ax.set_xlim(0-(0.04*maxYaux), maxX)
+    ax.set_ylim(0-(0.04*maxYaux), maxY)
 
     ax.vlines(xmean, -0.1, maxY, color='w', linestyle='--', alpha=0.8, zorder=3)
     ax.hlines(ymean, -0.1, maxX, color='w', linestyle='--', alpha=0.8, zorder=3)
