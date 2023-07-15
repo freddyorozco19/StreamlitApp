@@ -703,7 +703,7 @@ if menu_id == "AllMetrics":
 
     ax.scatter(xsel1, ysel1, s=szel1, color="#FFF", alpha=0.7)
     ax.scatter(xsel2, ysel2, s=szel2, color="#FFF", alpha=0.7)
-    ax.scatter(xsel3, ysel3, s=szel3,, color="#FFF", alpha=0.7)
+    ax.scatter(xsel3, ysel3, s=szel3, color="#FFF", alpha=0.7)
     spines = ['top','bottom','left','right']
     for x in spines:
         if x in spines:
