@@ -692,12 +692,15 @@ if menu_id == "AllMetrics":
     xsel1 = dfP1[metselFK]
     ysel1 = dfP1[metselFK2]
     zsel1 = dfP1['Minutes played']
+    ksel1 = dfP1['Player']
     xsel2 = dfP2[metselFK]
     ysel2 = dfP2[metselFK2]
     zsel2 = dfP2['Minutes played']
+    ksel2 = dfP2['Player']
     xsel3 = dfP3[metselFK]
     ysel3 = dfP3[metselFK2]
     zsel3 = dfP3['Minutes played']
+    ksel3 = dfP3['Player']
     #st.write(x)
     #st.write(y)
     #st.write(df['Goals']
@@ -706,6 +709,12 @@ if menu_id == "AllMetrics":
     ax.scatter(xsel1, ysel1, s=zsel1, color="#FFF", edgecolors='#121214', alpha=0.7)
     ax.scatter(xsel2, ysel2, s=zsel2, color="#FFF", edgecolors='#121214', alpha=0.7)
     ax.scatter(xsel3, ysel3, s=zsel3, color="#FFF", edgecolors='#121214', alpha=0.7)
+
+    #for i, txt in enumerate(zzz3):
+    ax.annotate(ksel1, (xsel1, ysel1), c='w', fontproperties=prop2, fontsize=10, zorder=4, ha='center', va='center')
+    ax.annotate(ksel2, (xsel2, ysel2), c='w', fontproperties=prop2, fontsize=10, zorder=4, ha='center', va='center')
+    ax.annotate(ksel3, (xsel3, ysel3), c='w', fontproperties=prop2, fontsize=10, zorder=4, ha='center', va='center')
+        
     spines = ['top','bottom','left','right']
     for x in spines:
         if x in spines:
