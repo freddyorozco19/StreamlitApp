@@ -514,13 +514,14 @@ if menu_id == "AllMetrics":
         with rs10:
             #SELECT POSITION OPTION
             positions = list(df['Pos1'].drop_duplicates())
-            #auxpos = "ALL"
-            #positions.append(auxpos)
+            auxpos = "ALL"
+            positions.append(auxpos)
+            position.sort()
             possel = st.multiselect("Seleccionar posición:", positions)
-            dfc = df
-            #if possel == "ALL":
-            #    df = dfc
-            #else:
+            dfcc = df
+            if possel == "ALL":
+                df = dfcc
+            else:
             df = df[df['Pos1'].isin(possel)]
         with rs20:
             metrics = [word for word in metrics if word != metsel]
