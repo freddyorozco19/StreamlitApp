@@ -545,6 +545,8 @@ if menu_id == "AllMetrics":
                 df = df[df['Team'] == teamsel]
         #with rx02:
             #FILTER BY LEAGUE
+            leaguelst = ['Segunda Liga Colombia']
+            leaguesel = st.selectbox('Seleccionar torneo:', leaguelst)
         
         rs01, rs02, rs03 = st.columns(3)
         with rs01:
