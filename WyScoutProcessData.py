@@ -504,6 +504,7 @@ if menu_id == "AllMetrics":
         #tablecode = st.text_area('Paste your source code')
         dfORIGINAL = df
         df['Pos1'] = df['Pos1'].fillna("OTH")
+        df['Team'] = df['Team'].replace(0, "Free Agent")
         rs00, rs10, rs20 = st.columns(3)
         with rs00:
             #SELECT METRIC
