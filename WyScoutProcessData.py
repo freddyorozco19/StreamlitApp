@@ -543,10 +543,14 @@ if menu_id == "AllMetrics":
                 df = dft
             else:
                 df = df[df['Team'] == teamsel]
-        #with rx02:
+        with rx02:
             #FILTER BY LEAGUE
             leaguelst = ['Segunda Liga Colombia']
             leaguesel = st.selectbox('Seleccionar torneo:', leaguelst)
+        with rx03:
+            #FILTER BY SEASON
+            seasonlst = ['Apertura 2023', 'Clausura 2023']
+            seasonsel = st.selectbox('Seleccionar temporada:', seasonlst)
         
         rs01, rs02, rs03 = st.columns(3)
         with rs01:
