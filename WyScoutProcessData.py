@@ -539,7 +539,7 @@ if menu_id == "AllMetrics":
             teamlst.sort()
             teamsel = st.selectbox('Seleccionar equipo:', teamlst)
             dft = df
-            if teamsel == "ALL":
+            if teamsel == "All Teams":
                 df = dft
             else:
                 df = df[df['Team'] == teamsel]
