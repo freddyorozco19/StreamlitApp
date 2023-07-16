@@ -503,6 +503,7 @@ if menu_id == "AllMetrics":
                             
         #tablecode = st.text_area('Paste your source code')
         dfORIGINAL = df
+        df['Pos1'] = df['Pos1'].fillna("OTH")
         rs00, rs10, rs20 = st.columns(3)
         with rs00:
             #SELECT METRIC
@@ -516,7 +517,7 @@ if menu_id == "AllMetrics":
             positions = list(df['Pos1'].drop_duplicates())
             auxpos = "ALL"
             positions.append(auxpos)
-            position.sort()
+            positions.sort()
             possel = st.multiselect("Seleccionar posición:", positions)
             dfcc = df
             if possel == "ALL":
