@@ -535,6 +535,7 @@ if menu_id == "AllMetrics":
             teamlst = list(df['Team'].drop_duplicates())
             auxteam = "ALL"
             teamlst.append(auxteam)
+            teamlst.sort()
             teamsel = st.selectbox('Seleccionar equipo:', teamlst)
             dft = df
             if teamsel == "ALL":
