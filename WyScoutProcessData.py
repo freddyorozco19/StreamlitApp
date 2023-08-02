@@ -233,7 +233,7 @@ if menu_id == "AllMetrics":
     df.insert(141, 'Total passes to final third', df['Passes to final third per 90']*df['90s'])
     df.insert(144, 'Total passes to final third completed', (df['Total passes to final third']*df['Accurate passes to final third, %'])/100)
     df.insert(145, 'Passes to final third completed per 90', df['Total passes to final third completed']/df['90s'])
-    df.insert(146, 'Total passes to penalty area', df['Passes to final third per 90']*df['90s'])
+    df.insert(146, 'Total passes to penalty area', df['Passes to penalty area per 90']*df['90s'])
     df.insert(149, 'Total passes to penalty area completed', (df['Total passes to penalty area']*df['Accurate passes to penalty area, %'])/100)
     df.insert(150, 'Passes to penalty area completed per 90', df['Total passes to penalty area completed']/df['90s'])
     df.insert(151, 'Total through passes', df['Through passes per 90']*df['90s'])
