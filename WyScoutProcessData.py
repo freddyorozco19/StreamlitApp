@@ -639,6 +639,7 @@ if menu_id == "AllMetrics":
             #else:
             df = df[df['Pos1'].isin(posselFK)]
         submit_buttonFK = st.form_submit_button(label='Aceptar') 
+    st.dataframe(df)    
     c = alt.Chart(df, width=800, height=400).mark_circle().encode(
           x=metselFK, y=metselFK2, size='90s', color='Pos1', 
           tooltip=['Player', metselFK, metselFK2, '90s', 'Age'] # <--- tooltip part
