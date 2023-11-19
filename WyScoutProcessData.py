@@ -638,112 +638,15 @@ if menu_id == "AllMetrics":
             #    df = dfc
             #else:
             df = df[df['Pos1'].isin(posselFK)]
-
-        fk11, fk12, fk13 = st.columns(3)
-        with fk11:
-            #FILTER BY MINUTES
-            maxmin = df['Minutes played'].max() + 5
-            minsel = st.slider('Filtro de minutos (%):', 0, 100)
-            minsel1 = (minsel*maxmin)/100
-            df = df[df['Minutes played'] >= minsel1].reset_index()
-            dfc = df
-        with fk12:
-            #FILTER BY AGE
-            agesel = st.slider('Filtro de edad:', 15, 45, (15, 45), 1)   
-            df = df[df['Age'] <= agesel[1]]
-            df = df[df['Age'] >= agesel[0]]
-        with fk13:
-            #FILTER BY UMBRAL
-            umbralsel = st.slider("Seleccionar umbral:", 1, 100, 1)
-            dfplot = df
-
-        fk21, fk22, fk23, fk24 = st.columns(4)
-        with fk21:
-            #FILTER BY TEAMS
-            df = dfORIGINAL
-            teams = list(df['Team'].drop_duplicates())
-            auxtm = "ALL"
-            teams.append(auxtm)
-            teamsele = st.selectbox('Seleccionar equipo:', teams)
-            dft = df
-            if teamsele == "ALL":
-                df = dft
-            else:
-                df = df[df['Team'] == teamsele]
-        with fk22:
-            #SELECT PLAYER 1
-            players = list(df['Player'].drop_duplicates())            
-            playersel1 = st.selectbox('Selecciona un jugador 1:', players)
-            #FILTER BY PLAYER
-            dfP1 = df[df['Player'] == playersel1]
-        with fk23:
-            #SELECT PLAYER 2
-            #players = list(df['Player'].drop_duplicates())            
-            playersel2 = st.selectbox('Selecciona un jugador 2:', players)
-            #FILTER BY PLAYER
-            dfP2 = df[df['Player'] == playersel2]
-        with fk24:
-            #SELECT PLAYER 3
-            #players = list(df['Player'].drop_duplicates())            
-            playersel3 = st.selectbox('Selecciona un jugador 3:', players)
-            #FILTER BY PLAYER
-            dfP3 = df[df['Player'] == playersel3]
-            
-        submit_buttonFK = st.form_submit_button(label='Aceptar')
-    fig, ax = plt.subplots(figsize = (12,12), dpi=600)
-    fig.set_facecolor('#121214')
-    ax.patch.set_facecolor('#121214')
-    xsel = dfplot[metselFK]
-    ysel = dfplot[metselFK2]
-    zsel = dfplot['Minutes played']
-    xmean = xsel.mean()
-    ymean = ysel.mean()
-
-    xsel1 = dfP1[metselFK]
-    ysel1 = dfP1[metselFK2]
-    zsel1 = dfP1['Minutes played']
-    ksel1 = dfP1['Player'].tolist()
-    xsel2 = dfP2[metselFK]
-    ysel2 = dfP2[metselFK2]
-    zsel2 = dfP2['Minutes played']
-    ksel2 = dfP2['Player'].tolist()
-    xsel3 = dfP3[metselFK]
-    ysel3 = dfP3[metselFK2]
-    zsel3 = dfP3['Minutes played']
-    ksel3 = dfP3['Player'].tolist()
-    #st.write(x)
-    #st.write(y)
-    #st.write(df['Goals']
-    ax.scatter(xsel, ysel, s=zsel, color="#FF0046", edgecolors='#121214', alpha=0.7)
-
-    ax.scatter(xsel1, ysel1, s=zsel1, color="#FFF", edgecolors='#121214', alpha=0.7)
-    ax.scatter(xsel2, ysel2, s=zsel2, color="#FFF", edgecolors='#121214', alpha=0.7)
-    ax.scatter(xsel3, ysel3, s=zsel3, color="#FFF", edgecolors='#121214', alpha=0.7)
-
-    #for i, txt in enumerate(zzz3):
-    ax.annotate(ksel1, (xsel1, ysel1+0.03), c='w', fontproperties=prop2, fontsize=9, zorder=4, ha='center', va='center')
-    ax.annotate(ksel2, (xsel2, ysel2+0.03), c='w', fontproperties=prop2, fontsize=9, zorder=4, ha='center', va='center')
-    ax.annotate(ksel3, (xsel3, ysel3+0.03), c='w', fontproperties=prop2, fontsize=9, zorder=4, ha='center', va='center')
-        
-    spines = ['top','bottom','left','right']
-    for x in spines:
-        if x in spines:
-            ax.spines[x].set_color("#FFFFFF")
-    plt.setp(ax.get_yticklabels(), fontproperties=prop2, fontsize=18, color='#FFF')
-    plt.setp(ax.get_xticklabels(), fontproperties=prop2, fontsize=20, color=(1,1,1,1))
-    plt.xlabel(metselFK, color = 'w', fontproperties=prop2, fontsize=15, labelpad=20)
-    plt.ylabel(metselFK2, color = 'w', fontproperties=prop2, fontsize=15, labelpad=20)
-    maxXaux = max(xsel)
-    maxX = maxXaux + (0.05*maxXaux)
-    maxYaux = max(ysel)
-    maxY = maxYaux + (0.05*maxYaux)
-    ax.set_xlim(0-(0.04*maxYaux), maxX)
-    ax.set_ylim(0-(0.04*maxYaux), maxY)
-
-    ax.vlines(xmean, -0.1, maxY, color='w', linestyle='--', alpha=0.8, zorder=3)
-    ax.hlines(ymean, -0.1, maxX, color='w', linestyle='--', alpha=0.8, zorder=3)
-    #st.markdown("<style> div { text-align: center; color: #FFFFFF } </style>", unsafe_allow_html=True)
-    st.pyplot(fig, bbox_inches="tight", dpi=600, format="png")
+        submit_buttonFK = st.form_submit_button(label='Aceptar') 
+    c = alt.Chart(df, width=800, height=400).mark_circle().encode(
+          x=metselFK, y=metselFK2, size='Minutes Played', color='Position', 
+          tooltip=['Player', metselFK, metselFK2, '90s', 'Age'] # <--- tooltip part
+      )
+    
+    st.altair_chart(c, theme="streamlit")
+    
+       
     
     # I usually dump any scripts at the bottom of the page to avoid adding unwanted blank lines
     st.markdown(f'<style>{css}</style>',unsafe_allow_html=True)
