@@ -973,6 +973,9 @@ if menu_id == "PlayerStats":
     st.write(df)
     st.markdown("""---""")
     st.title("RADAR METRICS GROUP")
+
+    coloropt1 = st.color_picker('Selecciona color principal', '#FF0046')
+    coloropt2 = st.color_picker('Selecciona color secundario', '#09459A')
     # Data Cleaning - Exploratory Data Analysis 
 
     #Filtrar métricas normalizadas por 90 minutos
@@ -1190,8 +1193,8 @@ if menu_id == "PlayerStats":
     
     space0, space1, space2 = st.columns((0.6, 0.6, 0.6))
 
-    colorradar1 = "#FF0046"
-    colorradar2 = "#005CBE"
+    colorradar1 = coloropt1
+    colorradar2 = coloropt2
     alpharradar1 = 0.5
     alpharradar2 = 0.5
     
