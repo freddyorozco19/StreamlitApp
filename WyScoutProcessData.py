@@ -973,7 +973,7 @@ if menu_id == "PlayerStats":
     st.write(df)
     st.markdown("""---""")
     st.title("RADAR METRICS GROUP")
-    coloroptcol1, coloroptcol2 = st.columns(4)
+    coloroptcol1, coloroptcol2, coloroptcol3, coloroptcol4 = st.columns(4)
     with coloroptcol1:
         coloropt1 = st.color_picker('Selecciona color principal', '#FF0046')
     with coloroptcol2:
