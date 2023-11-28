@@ -590,7 +590,7 @@ if menu_id == "AllMetrics":
         Y2 = df['Total second assists'].tail(10)
         Y3 = df['Total third assists'].tail(10)
         Z = df['Player'].tail(10).str.upper()
-        colors = colorlist((1, 0, 0.3137254901960784, 0.3), (1, 0, 0.3137254901960784, 1), 10)
+        colors = colorlist((1, 0, 0.3137254901960784, 0.3), (1, 0, 0.3137254901960784, 1), 20)
         ax.barh(Z, Y1, edgecolor=(1,1,1,0.5), lw = 1, color=colors)
         #ax.barh(Z, Y2, left = Y1, facecolor='#1C2E46', edgecolor=(1,1,1,0.5), lw = 1)
         #ax.barh(Z, Y3, left = Y2+Y1, facecolor='#404C5B', edgecolor=(1,1,1,0.5), lw = 1)
