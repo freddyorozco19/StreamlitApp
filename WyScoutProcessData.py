@@ -20,7 +20,7 @@ import matplotlib.font_manager as font_manager
 from radar_chart2 import Radar
 import altair as alt
 import requests
-
+from PIL import Image
 ############################################################################################################################################################################################################################
 
 def to_excel(df):
