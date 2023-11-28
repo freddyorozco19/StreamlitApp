@@ -19,6 +19,7 @@ import matplotlib.pyplot as plt
 import matplotlib.font_manager as font_manager
 from radar_chart2 import Radar
 import altair as alt
+import requests
 
 ############################################################################################################################################################################################################################
 
