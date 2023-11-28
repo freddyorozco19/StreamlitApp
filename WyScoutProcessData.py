@@ -606,7 +606,7 @@ if menu_id == "AllMetrics":
             if x in spines:
                 ax.spines[x].set_visible(False)
         ##Adding winstats logo
-        ax53 = fig.add_axes([0.82, 0.14, 0.05, 0.05])
+        ax53 = fig.add_axes([0.82, 0.05, 0.05, 0.05])
         url53 = "https://i.postimg.cc/R0QjGByL/sZggzUM.png"
         response = requests.get(url53)
         img = Image.open(BytesIO(response.content))
