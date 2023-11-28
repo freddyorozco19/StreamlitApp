@@ -590,7 +590,7 @@ if menu_id == "AllMetrics":
         Y2 = df['Total second assists'].tail(10)
         Y3 = df['Total third assists'].tail(10)
         Z = df['Player'].tail(10).str.upper()
-        colors = colorlist((1, 0, 0.3137254901960784, 0.3), (1, 0, 0.3137254901960784, 1), 20)
+        colors = colorlist((1, 0, 0.3137254901960784, 0.3), (1, 0, 0.3137254901960784, 1), 10)
         ax.barh(Z, Y1, edgecolor=(1,1,1,0.5), lw = 1, color=colors)
         #ax.barh(Z, Y2, left = Y1, facecolor='#1C2E46', edgecolor=(1,1,1,0.5), lw = 1)
         #ax.barh(Z, Y3, left = Y2+Y1, facecolor='#404C5B', edgecolor=(1,1,1,0.5), lw = 1)
@@ -604,6 +604,14 @@ if menu_id == "AllMetrics":
         for x in spines:
             if x in spines:
                 ax.spines[x].set_visible(False)
+        ##Adding winstats logo
+        ax53 = fig.add_axes([0.82, 0.14, 0.05, 0.05])
+        url53 = "https://i.postimg.cc/R0QjGByL/sZggzUM.png"
+        response = requests.get(url53)
+        img = Image.open(BytesIO(response.content))
+        ax53.imshow(img)
+        ax53.axis("off")
+        ax53.set_facecolor("#000")                
         st.pyplot(fig, bbox_inches="tight", dpi=600, format="png")  
     with mainrow1:
         dfZT = dfZT.sort_values(by=[metsel], ascending=False)
